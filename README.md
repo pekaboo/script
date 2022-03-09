@@ -1,6 +1,6 @@
 # Quanx
 Hello,Quanx
-[我的配置](./jun/qx.txt)
+[我的配置](./jun/qx)
 [我的配置-RI](https://gcore.jsdelivr.net/gh/pekaboo/script@main/jun/qx.txt)
 [我的配置-HAN](https://cdn.jsdelivr.net/gh/pekaboo/script@main/jun/qx.txt)
 
