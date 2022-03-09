@@ -1,5 +1,7 @@
 # Quanx
 Hello,Quanx
+[我的配置-RI](https://gcore.jsdelivr.net/gh/pekaboo/script@main/jun/qx.txt)
+[我的配置-HAN](https://cdn.jsdelivr.net/gh/pekaboo/script@main/jun/qx.txt)
 
 [查询github 最新](https://github.com/search?o=desc&q=quantumultx&s=updated&type=Repositories)
 
