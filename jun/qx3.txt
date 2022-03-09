@@ -67,7 +67,6 @@ url-latency-benchmark=🇺🇸United States, server-tag-regex=(?=.*(美国|美�
 
 [server_local]
 # 本地服务器部分, 自行添加即可
-[server_local]
 shadowsocks=172.104.99.210:8099, method=aes-256-cfb, password=eIW0Dnk69454e6nSwuspv9DmS201tQ0D, fast-open=false, udp-relay=false, tag=翻墙党190.77日本
 
 shadowsocks=192.240.123.26:8099, method=aes-256-cfb, password=eIW0Dnk69454e6nSwuspv9DmS201tQ0D, fast-open=false, udp-relay=false, tag=翻墙党393.56美国
