@@ -1,3 +1,11 @@
+网页： 去广告 VIP
+https://github.com/Gitbublgyj/quanx
+
+https://github.com/NeverF1ower/QuanX/blob/main/Script.conf
+
+https://github.com/nslliang/Quantumultx/blob/main/tail_ad.conf
+
+-----------------------
 hostname = *.googlevideo.com
 
 #新版YouTube去广告
@@ -238,3 +246,7 @@ https:\/\/api1000\.cvxia\.com\/(user\/info|mov\/browse2*) url script-response-bo
 https:\/\/.*\..*\.com\/(vod\/reqplay\/|ucp/index|getGlobalData) url script-response-body https://raw.githubusercontent.com/photonmang/quantumultX/master/xxys.js
 
 ---------------------
+
+
+
+

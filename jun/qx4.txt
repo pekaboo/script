@@ -1,0 +1,83 @@
+#https://github.com/ciocola/quanx/blob/main/quanx.conf
+
+[general]
+server_check_url=http://cp.cloudflare.com/generate_204
+dns_exclusion_list=*.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, id6.me, *.pingan.com.cn, *.cmbchina.com
+resource_parser_url=https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/ciocola/quanx/main/ip.js
+excluded_routes=239.255.255.250/32, 24.105.30.129/32, 185.60.112.157/32, 185.60.112.158/32, 182.162.132.1/32
+fallback_udp_policy=direct
+
+[dns]
+no-ipv6
+server=119.29.29.29
+address=/mtalk.google.com/108.177.125.188
+server=/dl.google.com/119.29.29.29
+server=/dl.l.google.com/119.29.29.29
+server=/tplogin.cn/system
+server=/tplinklogin.net/system
+server=/melogin.cn/system
+server=/falogin.cn/system
+
+[policy]
+static=GL, HK, TW, JP, SG, US, PROXY, DIRECT, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Global.png
+static=ME, HK, TW, JP, SG, US, GL, DIRECT, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Streaming.png
+static=SE, HK, TW, DIRECT, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/StreamingSE.png
+static=FL, GL, DIRECT, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Final.png
+url-latency-benchmark=HK, server-tag-regex=(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|美)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Hong_Kong.png
+url-latency-benchmark=TW, server-tag-regex=(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Taiwan.png
+url-latency-benchmark=JP, server-tag-regex=(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Japan.png
+url-latency-benchmark=SG, server-tag-regex=(?=.*(新|狮|獅|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Singapore.png
+url-latency-benchmark=US, server-tag-regex=(?=.*(美|US|(?i)States|American))^((?!(港|台|日|韩|新)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/United_States.png
+
+[server_remote]
+https://proxies.bihai.cf/vmess/sub?filter=r, tag=01, update-interval=86400, opt-parser=true, enabled=true
+
+[filter_remote]
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Advertising.list, tag=Advertise, force-policy=REJECT, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/AdvertisingPlus.list#type=domain-set, tag=Advertise+, force-policy=REJECT, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Privacy.list, tag=Privacy, force-policy=REJECT, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Hijacking.list, tag=Hijacking, force-policy=REJECT, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Unbreak.list, tag=Unbreak, force-policy=DIRECT, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/China.list, tag=China, force-policy=DIRECT, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Global.list, tag=Global, force-policy=GL, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Streaming.list, tag=Streaming, force-policy=ME, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/StreamingSE.list, tag=StreamingSE, force-policy=SE, update-interval=86400, opt-parser=true, enabled=true
+
+[rewrite_remote]
+https://raw.githubusercontent.com/ciocola/quanx/main/cookie.conf, tag=Cookie, update-interval=86400, enabled=false
+https://raw.githubusercontent.com/ciocola/quanx/main/rewrite.conf, tag=Rewrite, update-interval=86400, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Rewrite_lhie1.conf, tag=Lhie1, update-interval=86400, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/General.conf, tag=General, update-interval=86400, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/YouTubeAds.conf, tag=YouTubeAds, update-interval=86400, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/Advertising.conf, tag=Advertise, update-interval=86400, enabled=true
+
+[server_local]
+
+[filter_local]
+host-suffix, local, direct
+ip-cidr, 192.168.0.0/16, direct
+ip-cidr, 10.0.0.0/8, direct
+ip-cidr, 172.16.0.0/12, direct
+ip-cidr, 127.0.0.0/8, direct
+ip-cidr, 100.64.0.0/10, direct
+ip-cidr, 224.0.0.0/4, direct
+ip-cidr, 203.107.1.1/24, reject
+ip6-cidr, fe80::/10, direct
+geoip, cn, direct
+final, FL
+
+[rewrite_local]
+
+[task_local]
+0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js, tag=京东, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/meituan/meituan.js, tag=美团, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/meituan.png, enabled=true
+0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/mihoyo/mihoyo.js, tag=米游社, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/mihoyo.png, enabled=true
+0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/bilibili/bilibili.js, tag=哔哩哔哩, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/bilibili.png, enabled=true
+
+[http_backend]
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, tag=BoxJs, path=^/, enabled=true
+
+[mitm]
+passphrase = E92D0BD5
+p12 = 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
