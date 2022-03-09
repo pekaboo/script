@@ -1,7 +1,72 @@
 #https://github.com/dpdpzz/QuantumultX/blob/patch-1/DPQX.conf
 #https://github.com/18519194800/-/issues/3
 
-#本地節點
+# 图标库 → Qure：https://github.com/Koolson/Qure/tree/master/IconSet
+# 引用blackmatrix7规则脚本, KOP-XIAO的geo-checker js脚本, ip-api数据库
+# made by dpdpzz
+
+[general]
+server_check_url=http://cp.cloudflare.com/generate_204
+dns_exclusion_list=*.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, id6.me, *.pingan.com.cn, *.cmbchina.com
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://cdn.jsdelivr.net/gh/KOP-XIAO/QuantumultX@master/Scripts/IP_API.js
+resource_parser_url=https://cdn.jsdelivr.net/gh/KOP-XIAO/QuantumultX@master/Scripts/resource-parser.js
+excluded_routes=239.255.255.250/32, 24.105.30.129/32, 185.60.112.157/32, 185.60.112.158/32, 182.162.132.1/32
+fallback_udp_policy=direct
+
+[dns]
+no-ipv6
+server=119.29.29.29
+address=/mtalk.google.com/108.177.125.188
+server=/dl.google.com/119.29.29.29
+server=/dl.l.google.com/119.29.29.29
+server=/*.taobao.com/223.5.5.5
+server=/*.tmall.com/223.5.5.5
+server=/*.alipay.com/223.5.5.5
+server=/*.alicdn.com/223.5.5.5
+server=/*.aliyun.com/223.5.5.5
+server=/*.jd.com/119.28.28.28
+server=/*.qq.com/119.28.28.28
+server=/*.tencent.com/119.28.28.28
+server=/*.weixin.com/119.28.28.28
+server=/*.bilibili.com/119.29.29.29
+
+[policy]
+# 其中 Apple Update 为屏蔽iOS系统更新的策略组，默认保持直连，如有需要屏蔽，请在策略组面板自行切换至REJECT； 
+# CNMedia 分流为中国媒体（包括B站、爱奇艺等）；GBMedia 为国际媒体（包括HULU、HBO等）；  
+# Mainland 为访问大部分大陆网站时的分流策略；Outside 指定访问境外网站时的分流；
+# Others 为其他规则，若前边的规则都没有被匹配到，则听从此策略组的规定。
+# 策略想走特定节点或套娃，请长按分流策略组自行添加节点/策略组
+# 自动测速策略组只包含常用地区HK,JP,SG,US,TW, 其他地区和游戏节点建议在Proxy选择然后改变分流策略
+static=Others, direct, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+static=Mainland, direct, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Domestic.png
+static=Outside, proxy, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+static=CNMedia, direct, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/DomesticMedia.png
+static=GBMedia, proxy, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ForeignMedia.png
+# static=Instagram, proxy, 🇭🇰HongKong, 🇨🇳Taiwan, 🇯🇵Japan, 🇸🇬Singapore, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
+# static=TikTok, proxy, 🇭🇰HongKong, 🇨🇳Taiwan, 🇯🇵Japan, 🇸🇬Singapore, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png
+# static=YouTube, proxy, 🇭🇰HongKong, 🇨🇳Taiwan, 🇯🇵Japan, 🇸🇬Singapore, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+static=Pornhub, direct, proxy, 🇭🇰HongKong, 🇨🇳Taiwan, 🇯🇵Japan, 🇸🇬Singapore, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pornhub_1.png
+# static=Telegram, proxy, 🇭🇰HongKong, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+static=Google, proxy, 🇭🇰HongKong, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+static=Steam, 🇭🇰HongKong, 🇺🇸United States,direct, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
+# static=PayPal, direct, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png
+static=AdBlock, reject, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+static=Apple Update, direct, reject, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_Update.png
+static=Apple, direct, proxy, 🇯🇵Japan, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+static=Microsoft, direct, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+static=Speedtest, direct, proxy, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Speedtest.png
+# satic=Spotify, Auto, direct, proxy, 🇭🇰HongKong, 🇨🇳Taiwan, 🇯🇵Japan, 🇸🇬Singapore, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Kstoolson/Qure/master/IconSet/Color/Spotify.png
+# static=Netflix, Auto, direct, proxy, 🇭🇰HongKong, 🇨🇳Taiwan, 🇯🇵Japan, 🇸🇬Singapore, 🇺🇸United States, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix_Letter.png
+# url-latency-benchmark=Auto, server-tag-regex=(?=.*(美国|美國|US|(?i)States|American))^((?!(专线|手游|游戏|(?i)IPLC|IEPL|game)).)*$, check-interval=1800, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+# url-latency-benchmark=Auto-Game, server-tag-regex=(手游|游戏|专线|(?i)IPLC|IEPL|game), check-interval=1800, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
+url-latency-benchmark=🇭🇰HongKong, server-tag-regex=(?=.*(香港|HK|(?i)Hong))^((?!(专线|手游|游戏|(?i)IPLC|IEPL|game)).)*$, check-interval=1800, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+url-latency-benchmark=🇨🇳Taiwan, server-tag-regex=(?=.*(台湾|台灣|TW|(?i)Taiwan))^((?!(专线|手游|游戏|(?i)IPLC|IEPL|game)).)*$, check-interval=1800, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+url-latency-benchmark=🇯🇵Japan, server-tag-regex=(?=.*(日本|JP|(?i)Japan))^((?!(专线|手游|游戏|(?i)IPLC|IEPL|game)).)*$, check-interval=1800, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+url-latency-benchmark=🇸🇬Singapore, server-tag-regex=(?=.*(新加坡|狮城|SG|(?i)Singapore))^((?!(专线|手游|游戏|(?i)IPLC|IEPL|game)).)*$, check-interval=1800, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+url-latency-benchmark=🇺🇸United States, server-tag-regex=(?=.*(美国|美國|US|(?i)States|American))^((?!(专线|手游|游戏|(?i)IPLC|IEPL|game)).)*$, check-interval=1800, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+
+[server_local]
+# 本地服务器部分, 自行添加即可
 [server_local]
 shadowsocks=172.104.99.210:8099, method=aes-256-cfb, password=eIW0Dnk69454e6nSwuspv9DmS201tQ0D, fast-open=false, udp-relay=false, tag=翻墙党190.77日本
 
@@ -70,9 +135,8 @@ vmess=example.com:443, method=chacha20-poly1305, password=23ad6b10-8d1a-40f7-8ad
 vmess=example.com:443, method=chacha20-poly1305, password=23ad6b10-8d1a-40f7-8ad0-e3e35cd32291, obfs=wss, obfs-uri=/ws, fast-open=false, udp-relay=false, tag=WI-FI
 #解锁网易云音乐节点
 http=106.52.127.72:19951, fast-open=false, udp-relay=false, tag= 🎧𝐌𝐮𝐬𝐢𝐜0
-
-#訂閱地址
 [server_remote]
+# 节点远程订阅
 https://www.chenqiushi.cf/link/KUdSua9093UVLxQR?mu=2, tag=陆, update-interval=86400, opt-parser=true, enabled=true
 https://www.paofusub.com/link/P821D7aZ0Wn1aHFw?sub=1, tag=伍, update-interval=86400, opt-parser=true, enabled=true
 https://raw.githubusercontent.com/JACKUSR2089/v2ray-subscribed/master/2020-11-8, tag=肆, update-interval=86400, opt-parser=true, enabled=true
@@ -88,810 +152,98 @@ https://raw.githubusercontent.com/ntkernel/lantern/master/vmess_base64.txt, tag=
 https://jiang.netlify.com, tag=🇦🇬🌈3️⃣🏆🛰；, update-interval=86400, opt-parser=true, enabled=true
 https://raw.githubusercontent.com/cdp2020/v2ray/master/README.md, tag=🇧🇧🌈4️⃣🏆🛰；, update-interval=86400, opt-parser=true, enabled=true
 https://raw.githubusercontent.com/pojiezhiyuanjun/freev2/master/20200819.txt, tag=🇻🇮🌈5️⃣🏆🛰；, update-interval=86400, opt-parser=true, enabled=true
-
-#策略组
-[policy]
-
-static=新加坡, server-tag-regex=(?=.(?i)(新加坡|狮城|SG|Singapore))^((?!(?i)(IPLC|IEPL|game|专线|手游|游戏)).)$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/SG.png
-
-static=美国, server-tag-regex=(?=.(?i)(美国|美國|US|States|American))^((?!(?i)(IPLC|IEPL|game|专线|手游|游戏)).)$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/US.png
-
-static=日本, server-tag-regex=(?=.(?i)(日本|JP|Japan))^((?!(?i)(IPLC|IEPL|game|专线|手游|游戏)).)$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/JP.png
-
-static=韩国, server-tag-regex=(?=.(?i)(韩国|韓國|南朝鲜|KR|Korean))^((?!(?i)(IPLC|IEPL|game|专线|手游|游戏)).)$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/KR.png
-
-static=香港, server-tag-regex=(?=.(?i)(香港|HK|Hong))^((?!(?i)(IPLC|IEPL|game|专线|手游|游戏)).)$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/HK.png
-
-static=台湾, server-tag-regex=(?=.(?i)(台湾|台灣|TW|Taiwan))^((?!(?i)(IPLC|IEPL|game|手游|游戏)).)$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/TW.png
-
-static=特殊, server-tag-regex=^((?!(?i)(IPLC|IEPL|game|专线|手游|游戏|香港|台湾|日本|新加坡|美国|韩国|狮城|南朝鲜|US|SG|JP|KR|HK|TW|台灣|美國|韓國|獅城|States|American|Singapore|Japan|Korea|Hong|Taiwan|试用|流量|电报|网址|最新|域名|website)).)*$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/UN.png
-
-static=IPLC, server-tag-regex=(?i)(IPLC|IEPL|game|手游|游戏|专线), img-url=https://raw.githubusercontent.com/Orz-3/mini/master/IPLC.png
-
-available=🎥 奈飞视频, server-tag-regex=Netflix|netflix|NF|nf|奈飞|解锁流媒体|流媒体, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-
-static=𝐓𝐢𝐤𝐓𝐨𝐤, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/TikTok.png
-
-static=Google, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, img-url=https://cdn.jsdelivr.net/gh/ssooenftzero/0X@6b85a92275944b6d90c1b44c881c87206d6407c6/Quantumult%20X/icon/google.png
-
-static=𝐘𝐨𝐮𝐓𝐮𝐛𝐞, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 自動選擇, 節點選擇, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/YouTube-W.png
-
-static=苹果服务, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Apple.png
-
-static=全球加速, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, 韩国, 香港, 特殊, IPLC, 新加坡, 美国, 台湾, 日本, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Global.png
-
-static=港台番剧, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, 香港, 台湾, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/StreamingSE.png
-
-static=国际媒体, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, 🎥 奈飞视频, 🙈 网易云音乐, 韩国, 香港, 特殊, 新加坡, 美国, 日本, 台湾, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Streaming.png
-
-static=声田音乐, reject, direct, proxy, SSID,負載均衡, 健康檢測, 節點選擇, 自動選擇, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Spotify.png
-
-static=电报代理, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Telegram.png
-
-static=黑白名单, reject, direct, proxy, SSID, 負載均衡, 健康檢測, 節點選擇, 自動選擇, IPLC, 特殊, 香港, 韩国, 台湾, 日本, 美国, 新加坡, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Final.png
-
-static=🙈 网易云音乐, 🎧𝐌𝐮𝐬𝐢𝐜0, 🎧𝐌𝐮𝐬𝐢𝐜𝟏, 🎧𝐌𝐮𝐬𝐢𝐜𝟐, 🎧𝐌𝐮𝐬𝐢𝐜𝟑, 🎧𝐌𝐮𝐬𝐢𝐜𝟒, 🎧𝐌𝐮𝐬𝐢𝐜𝟓, 🎧𝐌𝐮𝐬𝐢𝐜𝟔, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netease_Music.png
-
-available=自動選擇, server-tag-regex=^(?!.(HK|JP|US|KR|香港|日本|韩国|美国)).$, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Auto.png
-
-round-robin=節點選擇, server-tag-regex=^(?!.(HK|JP|US|KR|香港|日本|韩国|美国)).$, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Round_Robin.png
-
-available=健康檢測, 翻墙党190.77日本, 翻墙党393.56美国, 1605155025.254965, 1605147235.030862, 🇳🇱荷兰|TG频道(@baipiaojiedian), img-url=https://cdn.jsdelivr.net/gh/ssooenftzero/0X@6b85a92275944b6d90c1b44c881c87206d6407c6/Quantumult%20X/icon/Available.png
-
-round-robin=負載均衡, 翻墙党190.77日本, 翻墙党132.86日本, 翻墙党299.86美国, 翻墙党280.83美国, 翻墙党300.27美国, 翻墙党393.56美国, 翻墙党119.09新加坡, 翻墙党127.11新加坡, 1604365748.601258, 1605155025.254965, 1605147235.030862, 1604919429.885032, 1604365783.593539, 2020-10-31 19:18:38, 2020-11-02 09:03:41, 2020-10-31 19:17:09, 老鬼-香港EC2 BGP中轉, TG@subssr🇯🇵+JP_741, TG@subssr🇯🇵+JP_743, TG@subssr🇯🇵+JP_758, TG@subssr🇯🇵+JP_750, TG@subssr🇬🇧+GB_572, TG@subssr🇰🇷+KR_807, TG@subssr🇰🇷+KR_803, TG@subssr🇰🇷+KR_801, TG@subssr🇩🇪+DE_298, TG@subssr🇹🇼+TW_1141, TG@subssr🇹🇼+TW_1142, TG@subssr🇹🇼+TW_1146, TG@subssr🇺🇸+US_1405, 🇳🇱荷兰|TG频道(@baipiaojiedian), img-url=https://raw.githubusercontent.com/Orz-3/mini/master/available.png
-
-ssid=SSID,負載均衡,負載均衡, img-url=https://cdn.jsdelivr.net/gh/ssooenftzero/0X@6b85a92275944b6d90c1b44c881c87206d6407c6/Quantumult%20X/icon/SSID.png
-
-#规则分流远程订阅
 [filter_remote]
-https://raw.githubusercontent.com/Hedilict/QuantumultX/master/Filter/NetEaseCloudMusic.list, tag=🙈 网易云音乐, enabled=true
+# 远程分流规则策略组
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list, tag=Apple (Apple服务), force-policy=Apple, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/AppStore/AppStore.list, tag=Apple (Apple服务), force-policy=Apple, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TestFlight/TestFlight.list, tag=Testflight, force-policy=Apple, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Advertising/Advertising.list, tag=AdBlock (广告拦截), force-policy=AdBlock, update-interval=86400, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Privacy.list, tag=Privacy(隐私), force-policy=reject, update-interval=86400, opt-parser=true, enabled=true
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Instagram/Instagram.list, tag=Instagram, force-policy=Instagram, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TikTok/TikTok.list, tag=TikTok, force-policy=Outside, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/Pornhub.list, tag=Pornhub, force-policy=Pornhub, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/YouTube.list, tag=YouTube（油管）, force-policy=Google, update-interval=86400, opt-parser=false, enabled=true
+# https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Telegram/Telegram.list, tag=Telegram（电报）, force-policy=Telegram, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Microsoft/Microsoft.list, tag=Microsoft（微软平台）, force-policy=Microsoft, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Speedtest/Speedtest.list, tag=Speedtest（测速平台）, force-policy=Speedtest, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Google/Google.list, tag=Google (全家桶), force-policy=Google, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Global.list, tag=Outside (境外网站), force-policy=Outside, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/China.list, tag=Mainland (大陆网站), force-policy=Mainland, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Region/HK.list, tag=HKMedia, force-policy=🇭🇰HongKong, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Region/TW.list, tag=TWMedia, force-policy=🇨🇳Taiwan, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Region/JP.list, tag=JPMedia, force-policy=🇯🇵Japan, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Region/US.list, tag=USMedia, force-policy=🇺🇸United States, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/StreamingCN.list, tag=CNMedia (大陆流媒体), force-policy=CNMedia, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Streaming.list, tag=GBMedia (境外流媒体), force-policy=GBMedia, update-interval=86400, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Steam/Steam.list, tag=Steam, force-policy=Steam, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/PayPal/PayPal.list, tag=PayPal（贝宝）, force-policy=Google, update-interval=86400, opt-parser=false, enabled=true
+https://cdn.jsdelivr.net/gh/17mon/china_ip_list@master/china_ip_list.txt#type=rule, tag=ChinaIPv4, force-policy=direct, update-interval=86400, opt-parser=true, enabled=true
+https://gaoyifan.github.io/china-operator-ip/chinanet6.txt#type=rule, tag=ChinaIPv6, force-policy=direct, update-interval=86400, opt-parser=true, enabled=true
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Netflix/Netflix.list, tag=Netflix（奈飞）, force-policy=Netflix, update-interval=86400, opt-parser=false, enabled=true
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Spotify/Spotify.list, tag=Spotify（声田音乐）, force-policy=Spotify, update-interval=86400, opt-parser=false, enabled=true
 
-https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/TikTok.list, force-policy=𝐓𝐢𝐤𝐓𝐨𝐤, tag=𝐓𝐢𝐤𝐓𝐨𝐤, enabled=true, opt-parser=true
-
-https://cdn.jsdelivr.net/gh/ConnersHua/Profiles/Quantumult/X/Filter/Google.list, tag=Google, force-policy=Google, enabled=true
-
-https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list, force-policy=𝐘𝐨𝐮𝐓𝐮𝐛𝐞, tag=𝐘𝐨𝐮𝐓𝐮𝐛𝐞, enabled=true, opt-parser=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Unbreak.list, tag=规则修正, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Telegram/Telegram.list, tag=电报代理, force-policy=电报代理, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Music/Spotify.list, tag=声田音乐, force-policy=声田音乐, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/TikTok.list, tag=海外抖音, force-policy=国际媒体, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/Bahamut.list, tag=动画疯, force-policy=台湾, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Streaming.list, tag=国际媒体, force-policy=国际媒体, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/StreamingSE.list, tag=港台番剧, force-policy=港台番剧, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Global.list, tag=全球加速, force-policy=全球加速, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/AppStoreConnect.list, tag=苹果服务, force-policy=苹果服务, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/AppStore.list, tag=苹果服务, force-policy=苹果服务, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/TestFlight.list, tag=苹果服务, force-policy=苹果服务, update-interval=86400, opt-parser=false, enabled=true
-
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/China.list, tag=国内网站, force-policy=direct, update-interval=86400, opt-parser=false, enabled=true
-
-#本地分流规则(对于完全相同的某条规则，本地的将优先生效)
 [filter_local]
-#没有特别需要可以不修改直接套用
+# 本地分流规则(相同规则下，本地规则将覆盖远程规则，优先生效)
+# 绕过企业证书过期
+# host, ocsp.apple.com, reject
+
+# 屏蔽系统更新
+# host, ns.itunes.apple.com, Apple Update
+# host, appldnld.apple.com, Apple Update
+# host, mesu.apple.com, Apple Update
+# host, xp.apple.com, Apple Update
+# host, gdmf.apple.com, Apple Update
+
+# 避免迅雷版权问题
+# host, hub5idx.v6.shub.sandai.net, reject
+# host, hub5emu.v6.shub.sandai.net, reject
+# host, hub5btmain.v6.shub.sandai.net, reject
+
+# 银行
+HOST-SUFFIX,95599.cn,direct
+HOST-SUFFIX,abchina.com,direct
+HOST-SUFFIX,bscabank.com,direct
+HOST-SUFFIX,openaboc.cn,direct
+HOST-SUFFIX,openaboc.com,direct
+HOST-SUFFIX,openaboc.com.cn,direct
+
+# Netease Music Advertising
+host,admusicpic.music.126.net,reject
+host,iadmat.nosdn.127.net,reject
+host,iadmusicmat.music.126.net,reject
+host,iadmusicmatvideo.music.126.net,reject
+
+# 其他
 host-suffix, local, direct
 ip-cidr, 10.0.0.0/8, direct
+ip-cidr, 17.0.0.0/8, direct
+ip-cidr, 100.64.0.0/10, direct
 ip-cidr, 127.0.0.0/8, direct
 ip-cidr, 172.16.0.0/12, direct
 ip-cidr, 192.168.0.0/16, direct
-ip-cidr, 224.0.0.0/24, direct
+ip6-cidr, fe80::/10, direct
 geoip, cn, direct
-final, 黑白名单
-host, rsshub.app, proxy
-#绕过企业证书过期
-host, ocsp.apple.com, reject
-#迅雷版权问题
-host, hub5idx.v6.shub.sandai.net, reject
-host, hub5emu.v6.shub.sandai.net, reject
-host, hub5btmain.v6.shub.sandai.net, reject
-#屏蔽系统更新
-host, mesu.apple.com, reject
-host, gdmf.apple.com, reject
-#去掉YouTube++底部广告
-host-suffix, ehg-youtube.hitbox.com, reject
-#网易云音乐
-host-suffix, music.126.net, direct
-host, https://raw.githubusercontent.com/tartarus2014/for-own-use/master/ruleset/loon/lol%3awild%20rift.list, reject
-host, https://raw.githubusercontent.com/tartarus2014/for-own-use/master/ruleset/loon/lol%3awild%20rift.list, SSID
-;user-agent, ?abc*, proxy
-;host, www.google.com, proxy
-;host-keyword, adsite, reject
-;host-suffix, googleapis.com, proxy
-host, steamdb.info, direct
-ip-cidr, 10.0.0.0/8, direct
-ip-cidr, 127.0.0.0/8, direct
-ip-cidr, 172.16.0.0/12, direct
-ip-cidr, 192.168.0.0/16, direct
-ip-cidr, 224.0.0.0/24, direct
-geoip, cn, direct
-final, 黑白名单
-[general]
-server_check_url=http://bing.com/
-dns_exclusion_list = *.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, id6.me, *.icitymobile.mobi, *.pingan.com.cn, *.cmbchina.com, .localnetwork.uop, mfs.ykimg.com.ttf
-geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/Orz-3/QuantumultX/master/IP.js
-resource_parser_url=https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
-profile_img_url=https://raw.githubusercontent.com/Orz-3/mini/none/qikuo.png
+# Final
+final, Others
 
-[dns]
-;指定的 dns服务器
-server=114.114.114.114
-server=119.29.29.29
-server=8.8.8.8
-;指定域名解析dns
-server=/.taobao.com/223.5.5.5
-server=/.tmall.com/223.5.5.5
-server=/.alipay.com/223.5.5.5
-server=/.alicdn.com/223.5.5.5
-server=/.aliyun.com/223.5.5.5
-server=/.jd.com/119.28.28.28
-server=/.qq.com/119.28.28.28
-server=/.tencent.com/119.28.28.28
-server=/.weixin.com/119.28.28.28
-server=/.bilibili.com/119.29.29.29
-server=/hdslb.com/119.29.29.29
-server=/.163.com/119.29.29.29
-server=/.126.com/119.29.29.29
-server=/.126.net/119.29.29.29
-server=/.127.net/119.29.29.29
-server=/.netease.com/119.29.29.29
-server=/.mi.com/119.29.29.29
-server=/*.xiaomi.com/119.29.29.29
-no-ipv6
-server=119.29.29.29
-address=/mtalk.google.com/108.177.125.188
-
-#rewrite 复写远程订阅
 [rewrite_remote]
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Unlock/TikTokJP.conf, tag=解锁Tiktok, update-interval=86400, opt-parser=false, enabled=true
-https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Rewrite_lhie1.conf, tag=lhie1去广告, update-interval=86400, opt-parser=false, enabled=true
-https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/General.conf, tag=神机重定向, update-interval=86400, opt-parser=false, enabled=true
-https://raw.githubusercontent.com/chiupam/Proxy/master/Loon/Loon_Price_Lite.plugin, tag=淘宝、京东历史价格（弹窗）, update-interval=86400, opt-parser=true, enabled=true
-https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/config/Loon.plugin, tag=订阅解析器, update-interval=86400, opt-parser=true, enabled=true
-https://gitee.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=Boxjs, update-interval=86400, opt-parser=true, enabled=true
-https://raw.githubusercontent.com/Orz-3/QuantumultX/master/JS.conf, tag=去广告, update-interval=86400, opt-parser=false, enabled=true
-https://raw.githubusercontent.com/Orz-3/QuantumultX/master/TikTok.conf, tag=tiktok, update-interval=86400, opt-parser=false, enabled=true
-https://raw.githubusercontent.com/Orz-3/QuantumultX/master/YouTube.conf, tag=YouTube去广告, update-interval=86400, opt-parser=false, enabled=true
-https://raw.githubusercontent.com/eHpo1/Rules/master/QuantumultX/Rewrite.txt, tag=eHpo1去广告, update-interval=86400, opt-parser=true, enabled=true
-https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Q-Search_All_in_one.conf, tag=Q-Search, update-interval=86400, opt-parser=false, enabled=true
-https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Js.conf, tag=nzw9314脚本, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/dpdpzz/QuantumultX/patch-1/Js_Script/Js_Script.conf, tag=Js脚本, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/dpdpzz/QuantumultX/main/Upgrade/NoUpgrade.conf, tag=屏蔽app升级, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rewrite/QuantumultX/AllInOne/AllInOne.conf, tag=blackmatrix7去广告重定向, update-interval=86400, opt-parser=false, enabled=true
+# https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/General.conf, tag=神机Google重定向, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=boxjs, update-interval=86400, opt-parser=false, enabled=true
+
 
 [rewrite_local]
-
-#此处我配套下方的自动化脚本，写入了所有的任务cookie抓取重写。请自行禁用你不需要的，禁用已经成功抓取过cookie的，要不费电
-#禁用方法：在下方的重写前方添加一个#号（变成绿色）就可以，或者直接删除（不推荐）
-#####################
-
-##iklear官方微商城h5
-#浏览器打开iklear官方微商城h5获取cookie，点击我的订单 => 右上角“签到” => 签到，提示 “🎉获取Cookie: 成功” 即可使用checkin脚本自动签到。
-#微商城链接：https://shop42867343.m.youzan.com/v2/feature/koy4ThfGd6?st=1&is_share=1&from_uuid=631f330d-80c2-626f-173f-f4855e50ee12&sf=wx_sm&share_cmpt=native_wechat
-^https://shop42867343.youzan.com/wscump/checkin/checkin.json url script-request-header https://raw.githubusercontent.com/LJJJia/script/master/iklear/iklear_cookie.js
-#奥利给直播解锁vip
-#下载地址：https://ok6.app/
-^https?://1008610010.yohui.vip/index.php/Api/LiveApi/getMovietime url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/aoligei/aoligei.js
-#录丸解锁vip（appstore下载）
-^https://irecgo.softin-tech.com/user/info url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/lw/lw.js
-#2496音乐解锁vip
-^http?://api_\d{4}.kuwo.cn/front/user/vipstatus$ url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/2496/2496.js
-#今日头条获取cookie
-^https://is.snssdk.com/score_task/v1/task/(sign_in|get_read_bonus) url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/jrtt/index.js
-^https://i.snssdk.com/ttgame/game_farm/home_info url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/jrtt/index.js
-#早起打卡赚钱花小程序自动打卡返利，搜索对应小程序获取cookie
-https://xx.cqxygzs.cn/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/daka5.js
-#坚持打卡赚钱小程序自动打卡返利，搜索对应小程序获取cookie
-https://zm.shujumagician.com/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/daka4.js
-#打卡赚钱啦小程序自动打卡返利，搜索对应小程序获取cookie
-^https://pd.xuexgchn.xyz/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/daka3.js
-#365打卡赚钱小程序自动打卡返利，搜索对应小程序获取cookie
-https://w3.ilovecoupon.top/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/daka2.js
-#微打卡小程序自动打卡返利，搜索对应小程序获取cookie
-https://zm.shujumagician.com/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/wdk.js
-#每日早起打卡赚钱小程序自动打卡返利，搜索对应小程序获取cookie
-https://ph0001.hezyq.com/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/daka1.js
-#早打卡赚钱小程序自动打卡返利
-#使用方法：微信搜索小程序“早打卡赚钱”，打开并授权登录即可获取cookie
-https://zm.shujumagician.com/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/zdk.js
-#爱尚每日打卡小程序自动打卡返利，打开对应小程序获取cookie后即可自动打卡
-#音乐linezidong 打卡返利
-#配置好脚本后，微信打开小程序音乐line获取cookie
-https://www.baimaa.com/* url script-request-header https://raw.githubusercontent.com/sngxpro/scripts/master/yydkziye.js
-#陀螺打卡
-#梨涡
-https://api.m.jd.com/api/v1/sign/doSign url script-request-body https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7dayscookie.js
-#京喜
-https://wq.jd.com/pgcenter/sign/QueryPGDetail?sceneval=2&pageSize=20 url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jingxi.js
-#航旅纵横
-^https://cloud.umetrip.com/gateway/api/web/rest/polite/app/sign/signpageinitdata url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/umetrip/umetrip.js
-#旅行世界购物版
-^https://ios-fenqu11.lxsjgo.com/dog/bug?ts url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/lxsj/index.js
-^https://ios-fenqu11.lxsjgo.com/dog/bug?ts url script-response-body https://raw.githubusercontent.com/iepngs/Script/master/lxsj/index.js
-#携程
-^https://m.ctrip.com/restapi/soa2/14946/json/userBaseInfo url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/ctrip/ctrip_cookie.js
-#携程小程序
-https://socketio\.ctrip\.com/api url reject
-^https://m.ctrip.com/restapi/soa2/16575/signin url script-request-body https://raw.githubusercontent.com/barrym-chen/Script/master/ctrip_wx/ct_cookie.js
-#艺龙酒店
-^https://m.elong.com/my/rafflemileagejson/getRaffleMileageTodayCount url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/elong/elong_draw_cookis.js
-#飞常准
-^https://activity.m.duiba.com.cn/signactivity/getSignInfo? url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/fcz/fcz_cookie.js
-#工行e生活
-^https://icbc1.wlphp.com:8444/js/api/index/signIn url script-request-body https://raw.githubusercontent.com/barrym-chen/Script/master/icbc/icbc_cookie.js
-#京东成长分
-#需要通过京东学生认证这是签到的基础。点击京东app->我的->小白成长分即可获取cookie成功
-^https://ms.jr.jd.com/gw/generic/bt/h5/m/queryUserSignFlow url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/jdczf/jdczf_cookie.js
-#同程小程序
-^https://wx.17u.cn/wcsign/sign/GetSignInfo url script-request-body https://raw.githubusercontent.com/barrym-chen/Script/master/tongc/tongc_cookie.js
-#趣走尊享版App签到（功能:跑步，签到，打卡，步数兑换,偷步等）
-https://mobile01.91quzou.com/rebate/qz/task/homeTaskView.do url script-request-header https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/quwalk2.2.js
-#抖音去广告 + 下载去水印
-^https?://.+?.amemv.com/aweme/v\d/(feed|aweme/post|follow/feed|nearby/feed|search/item|general/search/single|hot/search/video/list)/ url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
-^https?://.+?.amemv.com/aweme/v\d/(feed|aweme/post|follow/feed|nearby/feed|search/item|general/search/single|hot/search/video/list)/ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
-#百度云盘播放视频解除限速
-https://pan.baidu.com/rest/2.0/membership/user url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/BaiduCloud.js
-#淘宝比价
-#注意：不生效或失效的需要卸载 tb 重装，注意不开脚本进 tb 会失效
-^http://.+/amdc/mobileDispatch url script-request-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
-^https?://trade-acs.m.taobao.com/gw/mtop.taobao.detail.getdetail url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
-#爱美剧解锁vip
-#app下载地址：xmj1.app，推荐选择下载旧版本
-^https?://api.bjxkhc.com/index.php/app/ios/(vod/show|(user|vod|topic|type)/index) url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/aimeiju.js
-#酷我音乐vip解锁
-^https?://vip1.kuwo.cn/(vip/v2/user/vip|vip/spi/mservice) url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Kuwo.js
-#cu云加速每日签到
-^https://www.cuuc.club/user/checkin url script-request-header https://raw.githubusercontent.com/dompling/Script/master/cuuc/cuuc.cookie.js
-#宠汪汪聚宝盆辅助脚本
-#进入聚宝盆,显示本轮狗粮池投入总数,方便估算；可能有两位数误差,影响不大
-^https://jdjoy\.jd\.com/pet/getPetTreasureBox url script-response-body https://raw.githubusercontent.com/Zero-S1/JD_tools/master/jbp.js
-#黄瓜视频无限观影 + 解锁付费影片
-#黄瓜视频下载地址：http://suo.im/5Fc3Ls
-https://api1000.cvxia.com/(user/info|mov/browse2*) url script-response-body https://raw.githubusercontent.com/sngxpro/scripts/master/hgsp.js
-#网易蜗牛读书解锁会员
-^https?://p.du.163.com/gain/readtime/info.json url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/wnyd.js
-#快看漫画自动签到获取cookie
-#打开快看漫画App后(AppStore中国区)，点击"我的", 如通知成功获取cookie, 则可以使用签到脚本
-^https://api.kkmh.com/v\d/passport/user url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/KuaiKan-DailyBonus/KKMH.js
-#白描解锁黄金vip
-^https?://baimiao.uzero.cn/api/v\d.user/appLaunchWithUser$ url script-response-body https://raw.githubusercontent.com/sirsunknight/QuantumultX/master/Scripts/Baimiao.js
-#大象冥想 解锁VIP&付费音乐
-^https?://nmeditation.snailsleep.net/meditation-(audio|user|order|audio)/(api|user)/(audio/master/detail|get/info|order/user/vip/info|ad/get) url script-response-body https://raw.githubusercontent.com/photonmang/quantumultX/master/dxmx.js
-#蜗牛睡眠 全功能解锁VIP&付费音乐
-^https://(snailsleep.net/|(music|community).snailsleep.net/)(snail/v1/profile/get|snail-music/music/(sleeping|meditation)/single/list) url script-response-body https://github.com/photonmang/quantumultX/raw/master/wnsm.js
-#乐心健康步数上传
-^https://sports.lifesense.com/sport_service/sport/sport/uploadMobileStepV2 url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/lxhealth/manual.js
-#go语言中文网签到
-#手动登录 https://studygolang.com 点击自己头像右边用户名下面的“个人资料设置”页面 如通知成功获取cookie, 则可以使用此签到脚本.获取Cookie后, 请将Cookie脚本禁用并移除主机名，以免产生不必要的MITM.脚本将在每天上午9点执行。 可以修改执行时间。
-https://studygolang.com/account/edit url script-request-header https://raw.githubusercontent.com/iepngs/Script/master/studygolang/index.js
-#QQ萌宠获取cookie
-#配置完之后，手机qq进入左侧会员，再点击右侧qq宠物(如果没弹出获取成功通知，点击右上角3个点，重启小程序)
-https://qqpet.jwetech.com/api/authorizations url script-response-body https://raw.githubusercontent.com/lowking/Scripts/master/QQPet/lkQQPet.js
-#惠头条
-#获取ck完毕可以禁止该js
-https://api.cashtoutiao.com url script-request-body https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/htt_cookie.js
-#小米有品
-#使用方法：进入签到页面获取，https://m.xiaomiyoupin.com:个人中心->我的资产->积分
-^https://m.xiaomiyoupin.com/api/auth/login/isloggedin url script-request-header https://raw.githubusercontent.com/dompling/Script/master/xiaomiyp/xiaomiyp.cookie.js
-#解锁91短视频vip
-^https?://.+.(my10api|(.91.)).(com|tips|app|xyz)(:\d{2,5})?/api.php$ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/91.js
-#Funboat签到
-https://h5.youzan.com/wscump/checkin/checkin url script-request-header https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/funboat/funboat.js
-https://h5.youzan.com/wscuser/membercenter/stats url script-request-header https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/funboat/funboat.js
-#斗鱼鱼吧签到
-^https://yuba.douyu.com/wbapi/web/group/myFollow? url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/douyu/yubaSign.js
-#陌陌极速版app签到获取cookie
-https://mk.immomo.com/activity/fastsign/index/signIn? url script-request-body https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/momosign.js
-#小小影视获取cookie
-#使用方法：开启圈x，打开小小影视app，打开我的。
-^https://....com/ucp/index url script-request-header https://raw.githubusercontent.com/sngxpro/quantumultX-1/master/xxys.cookie.js
-#小小影视解锁无限观影无限下载特权
-#开启圈x自动生效
-https://....com/(vod/reqplay/|ucp/index|getGlobalData) url script-response-body https://raw.githubusercontent.com/photonmang/quantumultX/master/xxys.js
-#宠汪汪强制助力
-#使用方法：①设置好相应软件的重写②从京东APP宠汪汪->领狗粮->邀请好友助力，分享给你小号微信或者微信的文件传输助手。
-#在微信中点击自己刚才的分享链接，随机出现虚假好友，点助力，助力成功后可得积分。退出小程序重复，共可领3次。如提示好友人气旺，重新操作。
-#太好购小程序签到
-#使用方法：进入小程序点我的
-^https://cxdng.cpic.com.cn/taieshop/api/CustomerFansInfo/GetFansInfo url script-request-header https://raw.githubusercontent.com/id77/QuantumultX/master/task/thg.cookie.js
-#网易游戏会员签到
-#使用方法：浏览器访问 huiyuan.163.com，登录您的账号，点击签到，然后点击保底签或奇遇签（2选1），即可获取cookie
-^https://huiyuan.163.com/jf-mall-api/api/sign_up/(lucky|normal) url script-request-header https://raw.githubusercontent.com/id77/QuantumultX/master/task/163GameVip.cookie.js
-#京东滚滚而来网页注入脚本
-#使用说明：打开网页https://xeq1kjnhr.m.jd.com/static/index.html并保持登录或有cookie，在浏览器中会出现代码控制台，点执行即可
-##浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后即可获取京东cookie
-https://xeq1kjnhr\.m\.jd\.com/static/index\.html url script-response-body https://raw.githubusercontent.com/ZhiYi-N/Loon/master/jd_hd.js
-#acfun抓cookie
-#使用方法：关闭app进程，重新打开 APP, 访问下我的即可
-^https://api-new.app.acfun.cn/rest/app/user/personalInfo url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/acfun/acfun.cookie.js
-#小黑盒抓cookie（有封号几率慎重使用）
-^https://api.xiaoheihe.cn/account/home_v\d/? url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/heybox/heybox.js
-#热8超级魔盒抓cookie（限时活动已结束，删除）
-#百度贴吧
-#用浏览器访问一下: https://tieba.baidu.com 或者 https://tieba.baidu.com/index/或者访问app
-^https?://tieba.baidu.com/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/tieba/tieba.cookie.js
-#wps
-#打开 APP , 进入签到页面,
-^https://zt.wps.cn/2018/docer_check_in/api/act_list url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wps/wps.cookie.js
-#饿了么-打卡领红包
-^https://h5.ele.me/restapi/eus/v\d/current_user$ url script-request-header https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemGetCookies.js
-#bilibili动画&番剧
-#使用说明：要在网页版的b站获取cookie，用浏览器访问www.bilibili.com 或 live.bilibili.com即可
-^https://(www|live).bilibili.com/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/bilibili/bilibili.cookie.js
-#吾爱破解
-#手动登录 https://www.52pojie.cn
-https://www.52pojie.cn/home.php? url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js
-#bilibili漫画
-#打开bilibili漫画，点我的即可。和上面的bilibili动画冲突，不要同时启用。抓完cookie禁用即可。
-#https://manga.bilibili.com/..User/GetWallet url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/Bilibili-DailyBonus/Manga.js
-#京东多合一签到
-#浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后即可获取
-https://api.m.jd.com/client.action.functionId=signBean url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
-#爱奇艺
-#打开爱奇艺App后(AppStore中国区)，点击"我的"
-https?://..iqiyi.com/.authcookie= url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/iQIYI.js
-#中国电信
-#使用说明：打开 APP 手动签到一次: 访问下右下角 我 > 签到 (头像下面)
-^https://wapside.189.cn:9001/api/home/homeInfo url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/10000/10000.cookie.js
-#中国联通
-#使用说明：(1)打开 APP , 进入签到页面, 系统提示: 获取刷新链接: 成功;(2)然后手动签到 1 次, 系统提示: 获取Cookie: 成功 (每日签到);(3)首页>天天抽奖, 系统提示 2 次: 获取Cookie: 成功 (登录抽奖) 和 获取Cookie: 成功 (抽奖次数)
-^https?://act.10010.com/SigninApp/signin/querySigninActivity.htm url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.cookie.js
-^https?://act.10010.com/SigninApp(.?)/signin/daySign url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.cookie.js
-^https?://m.client.10010.com/dailylottery/static/(textdl/userLogin|active/findActivityInfo) url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.cookie.js
-#中国移动
-#使用说明：打开 APP , 进入签到页面, 系统提示: 获取刷新链接: 成功；然后手动签到 1 次, 系统提示: 获取Cookie: 成功
-^http://wx.10086.cn/website/taskCenter/index? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.cookie.js
-^http://wx.10086.cn/website/taskCenter/sign? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.cookie.js
-#移动查话费
-^https://clientaccess.10086.cn/biz-orange/LN/uamrandcodelogin/autoLogin url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.fee.cookie.js
-^https://clientaccess.10086.cn/biz-orange/BN/realFeeQuery/getRealFee url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.fee.cookie.js
-#apk.tw
-#使用方法：访问 https://apk.tw/ 后登陆你的账号，注意必须是开圈x后再登录，如果之前登录过了注销一次再操作
-^https://apk.tw\/member.php(.*?)action=login url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/apktw/apktw.cookie.js
-#百词斩
-#使用方法：打开 APP 手动签到一次: 访问下右下角 我 > 我的铜板 > 加入百词斩小班 > 去查看 > 我的小班进去 领铜板
-^https://group\.baicizhan\.com/group/rewards? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/bcz/bcz.cookie.js
-#不背单词
-#使用方法：打开 APP不背单词 然后手动签到 1 次,
-^https://sapi.beingfine.cn/v3/bb/reward/by-sign-in url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/bubei/bubei.js
-#csdn
-#使用方法：打开 APP , 系统提示: 获取刷新链接: 成功;然后手动签到 1 次, 系统提示: 获取Cookie: 成功
-^https://passport.csdn.net/v2/api/app/login/checkAndRefreshToken url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.cookie.js
-^https://gw.csdn.net/mini-app/v2/lucky_draw/login/sign_in? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.cookie.js
-#豆瓣时间
-#使用方法：打开 APP 手动签到一次: 市集 > 豆瓣时间 > 签到
-^https://frodo.douban.com/api/v2/niffler/check_in/status url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/dbsj/dbsj.cookie.js
-#懂球帝
-#使用方法：打开懂球帝 (打开前先杀掉 APP)
-^https://api.dongqiudi.com/v2/user/is_login url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/dongqiudi/dongqiudi.cookie.js
-#多看阅读
-#使用方法：打开我的 > 签到任务
-^https://www.duokan.com/checkin/v0/status url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/duokan/duokan.cookie.js
-#时光相册
-#打开 APP 然后手动签到 1 次
-^https://api.everphoto.cn/users/self/checkin/v2 url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/everphoto/everphoto.cookie.js
-#樊登读书
-#打开 APP 手动签到一次: 访问下右下角 我的 > 签到
-^https://api\.dushu\.io/CheckIn url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/fandeng/fandeng.cookie.js
-#威锋（后台有验证了，偶尔会失效，放弃）
-#分期乐
-#使用方法：打开 APP 手动签到一次: 访问下右下角 我的 > 乐星 > 签到,我的 > 账单点击 > 超级乐星日/天天领乐星
-^https://pm\.m\.fenqile\.com/route0014/star/sign/sign.json url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/fenqile/fenqile.cookie.js
-^https://pm.m.fenqile.com/route0014/app/tab/privilege/convertTaskReward.json url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/fenqile/fenqile.cookie.js
-#飞客茶馆
-#打开 APP, 访问下个人中心
-^https://www.flyertea.com/source/plugin/mobile/mobile.php?module=getdata&. url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/flyertea/flyertea.cookie.js
-#加油广东
-#打开 APP 然后手动签到 1 次
-^https://m.gdoil.cn/webapi/usersign/addusersign url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/gdoil/gdoil.cookie.js
-#海底捞
-#打开 APP海底捞 然后手动签到 1 次
-^https://activity-1.m.duiba.com.cn/signactivity/doSign$ url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/haidilao/hdl.js
-#哈啰出行
-#打开 APP 进入签到页面: 我的 > 有哈有车
-^https://gameapi.hellobike.com/api url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/hellobike/hellobike.js
-#合创
-#打开 APPHYCAN合创 然后手动签到 1 次
-^https://wxprdapplet.gac-nio.com/community/userSignIn/simpleAuth/front/./sign$ url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/hycan/hycan.cookie.js
-#ithome
-#打开 APP 然后进入签到页面
-^https://my.ruanmei.com/api/usersign/getsigninfo? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/ithome/ithome.cookie.js
-#京东到家
-#使用方法：手机App打开,我的> 签到有惊喜>签到；或者手机浏览器打开https://daojia.jd.com/html/index.html,我的> 签到有惊喜 >签到
-^https://daojia.jd.com/client(.?)functionId=signin(.?)userSigninNew url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/jddj/jddj.cookie.js
-#猫咪音乐
-#打开 网站 https://www.maomicd.com 然后手动签到 1 次
-https://www.maomicd.com/plugin.php?id=k_misign:sign&operation=qiandao url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/maomicd/maomicd.cookie.js
-#叮咚买菜
-#打开 APP, 访问下我的>积分
-^https://maicai.api.ddxq.mobi/point/home url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/mcdd/mcdd.cookie.js
-#美团
-#打开 APP , 然后手动签到 1 次
-^https://i.meituan.com/evolve/signin/signpost/ url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/meituan/meituan.cookie.js
-#芒果TV
-#打开 APP 然后手动签到 1 次
-^https://credits.bz.mgtv.com/user/creditsTake url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/mgtv/mgtv.cookie.js
-#米读签到+米读阅读时长
-#打开 APP （1）进入我的 -> 疯狂摇摇乐,系统提示: 签到:获取Cookie: 成功；（2）阅读时长获取Cookie:打开 APP 选取文章阅读， 书城 > 任意文章阅读 等到提示获取Cookie成功
-^https://apiwz.midukanshu.com url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/midu/midu.cookie.js
-#米游社
-#打开 APP
-^https://api-takumi.mihoyo.com/apihub/api/getGameList url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/mihoyo/mihoyo.cookie.js
-#网抑云
-#先登录: https://music.163.com/m/login，再访问: https://music.163.com/#/user/level获取cookie
-^https://music.163.com/weapi/user/level url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/neteasemusic/neteasemusic.cookie.js
-#网易新闻
-#打开 APP 然后手动签到 1 次:
-^https://(.?)c.m.163.com/uc/api/sign/v3/commit url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/neteasenews/neteasenews.cookie.js
-#南方周末
-#点击签到获取
-^http://api.infzm.com/mobile/pumpkin_task/complete? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/nfzm/nfzm.cookie.js
-#蔚来
-#打开 APP蔚来 然后手动签到 1 次
-^https://app.nio.com/api/1/app/daily_checkin url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/nio/nio.cookie.js
-#百果园
-#进入微信小程序直接签到
-^https://wx-mini.pagoda.com.cn/api/v1/wxmini/signIn/customer url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/pagoda/pagoda.cookie.js
-#七猫小说
-#注意！！！！暂时关闭QX或Surge中的广告屏蔽, 否则无法获取小视频奖励cookie和url！！！
-#打开 APP七猫小说 然后到APP内福利界面手动日常签到(观看小视频领取奖励),新手领福利签到,视频签到以及幸运大转盘 1 次, 系统提示: 首次写入xxxUrl成功🎉,首次写入xxxCookie成功
-^https://xiaoshuo.qm989.com url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/qimao/qmnovel.js
-#全民K歌
-#打开 APP 手动签到一次: 访问下右下角 我的 > 任务中心 > 签到
-^https://node\.kg\.qq\.com/webapp/proxy? url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/qmkg/qmkg.cookie.js
-#qq音乐（已停止维护跳过）
-#趣头条
-#打开 APP 进入签到: 右上角 > 签到
-^https://api.1sapp.com/sign/info? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.cookie.js
-^https://api.1sapp.com/content/readV2? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.cookie.js
-^https://api.1sapp.com/x/feed/getReward? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.cookie.js
-#去哪儿
-#打开 APP 然后手动签到 1 次:
-^https://user.qunar.com/webapi/member/signIndexV2.htm url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/qunar/qunar.cookie.js
-#人人视频
-#打开 APP, 访问下个人中心
-^https://api.rr.tv/user/profile url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/rrtv/rrtv.cookie.js
-#顺丰
-#打开 APP, （1）访问下我的顺丰 > 去签到 (访问下去签到的页面即可, 不用点签到), 系统提示: 获取Cookie: 成功；（2）访问下27周年庆, 系统提示: 获取Cookie: 成功 (27周年)
-^https://sf-integral-sign-in.weixinjia.net/app/index url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.cookie.js
-^https://mcs-mimp-web.sf-express.com/mcs-mimp/share/(.?)Redirect url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.cookie.js
-#什么值得买
-#浏览器访问并登录: https://zhiyou.smzdm.com/user/login；浏览器访问: https://www.smzdm.com
-^https://www.smzdm.com/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/quanx/smzdm.cookie.js
-#苏宁易购
-#【必要】打开 APP, 系统提示: 获取Cookie: 成功 (登录链接)；【可选】进入 主页 > 签到有礼, 系统提示: 获取Cookie: 成功 (每日签到)；【可选】进入 主页 > 领取红包, 系统提示: 获取Cookie: 成功 (每日红包) (如果找不到领取红包，尝试卸载苏宁重新安装) 兼容之前 @barrymchen 写的 snyg.js 如果之前有用这个脚本获取过 Cookie 那不用重新取；【可选】进入 主页 > 天天低价 > 点右上角宝箱, 系统提示: 获取Cookie: 成功 (天天低价)、获取Cookie: 成功 (查询天天低价)
-^https://passport.suning.com/ids/login$ url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-^https://luckman.suning.com/luck-web/sign/api/clock_sign.do url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-^https://sign.suning.com/sign-web/m/promotion/sign/doSign.do url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-^https://gameapi.suning.com/sngame-web/(api/signin/private/customerSignOperation.do|gateway/api/queryPrize.do) url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-#头脑吃鸡
-#直接开
-^https://tncj.hortorgames.com/chicken/fight/(answer|findQuiz) url script-response-body https://raw.githubusercontent.com/chavyleung/scripts/master/tncj/tncj.min.js
-#v2ex
-#浏览器访问并登录: https://www.v2ex.com；浏览器访问: https://www.v2ex.com/mission/daily
-^https://www.v2ex.com/mission/daily url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/v2ex/v2ex.cookie.js
-#腾讯视频
-#(似乎活动已结束）手机浏览器访问: https://film.qq.com/随便选 1 部电影观看，然后点击http://v.qq.com/x/bu/mobile_checkin 到页 获取cookie
-^https://access.video.qq.com/user/auth_refresh url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/videoqq/videoqq.cookie.js
-#万达电影
-#进入签到页面获取，网页端:https://act-m.wandacinemas.com/2005/17621a8caacc4d190dadd/
-^https://user-api-prd-mx.wandafilm.com url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wanda/wanda.cookie.js
-#美团外卖
-#打开 APP , 进入签到页面
-^https://promotion.waimai.meituan.com/playcenter/signIn/entry url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wmmeituan/wmmeituan.cookie.js
-^https://promotion.waimai.meituan.com/playcenter/signIn/doaction url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/wmmeituan/wmmeituan.cookie.js
-#网易考拉（弃坑）
-#喜马拉雅
-#打开 APP, 访问下右下角账号
-^https?://./mobile-user/homePage/.* url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/ximalaya/ximalaya.cookie.js
-#网易严选（有账号异常风险，建议停用）
-#zaker
-#打开 APPZAKER 然后手动签到 1 次
-^https://iphone.myzaker.com/zaker/sign_in//api/sign_in.php url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/zaker/zaker.js
-#字幕组
-#先在浏览器登录 (先登录! 先登录! 先登录!)，打开圈x开关，打开浏览器访问: http://www.rrys2019.com
-^https?://(www.)?rrys2019.com/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/zimuzu/zimuzu.cookie.js
-^http://ios.zmzapi.com/index.php.a=(mobile_)?login url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/zimuzu/zimuzu.cookie.js
-#掌上飞车
-#打开 APP掌上飞车 然后手动签到 1 次
-^https://mwegame.qq.com/ams/sign/doSign/month url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/zsfc/zsfc.js
-#智行火车
-#打开 APP 手动签到一次: 访问下右下角 个人中心 > 签到
-^https://m.ctrip.com/restapi/soa2/14593/json/attendanceDay? url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/zxhc/zxhc.cookie.js
-#115网盘
-#（似乎有活动期限）进入"115"并摇一摇，若弹出"首次写入115 Cookie 成功"即可正常食用
-^https?://proapi.115.com/ios/user/takespc? url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/115/115.js
-#便利蜂
-#进入"便利蜂"，点击"签到赚礼金"
-^https://h5.bianlifeng.com/meepo/taskCenter/home/v\d url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Blibee/Blibee.js
-#滴滴出行+滴滴福利金
-#进入"滴滴出行"，若弹出"首次写入滴滴出行 Token 成功"即可正常食用，先手动运行一次脚本，弹出成功后回到"滴滴出行"，点击右上角"天天领福利"查看福利金是否到账
-^https://as.xiaojukeji.com/ep/as/toggles? url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi.js
-^https://superapp.kiwa-tech.com/app/coupon/customerLevelShow url script-request-body https://raw.githubusercontent.com/zZPiglet/Task/master/Haidilao/Haidilao.js
-^https://activity-1.m.duiba.com.cn/signactivity/getSignInfo url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Haidilao/Haidilao.js
-#奈雪
-#进入"奈雪点单"小程序，若弹出"首次写入奈雪の茶 Token 成功"即可正常食用
-^https://webapi.qmai.cn/web/cy/v\d/store/template-scene url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Naixue/Naixue.js
-#掌门好老师
-#进入"掌门好老师"，点击左上方"签到"或"📅"日历图标，若弹出"首次写入掌门好老师 Token 成功"即可正常食用
-^https://teacherapi.zmlearn.com/v1/teacherApp/app/points/taskCenter url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/ZMTeacher/ZMTeacher.js
-#欧可林
-#进入"欧可林"并点击"活动"，若弹出"首次写入欧可林 Cookie 成功"即可正常食用
-^https://mall.oclean.com/API/VshopProcess.ashx$ url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Oclean/Oclean.js
-#豆瓣电影日历
-#获取完cookie后删掉或者#号掉hostname中的词条，否则网络不稳。 请先按下述方法进行配置，进入widget 界面（iOS 13 负一屏），添加「豆瓣·电影日历」，并重新进入此界面使其刷新获取内容，若弹出"首次写入 MovieCalendar APIKey 成功"即可正常食用，其他提示或无提示请使用其他方法获取 APIKey
-^https://frodo.douban.com/api/v\d/calendar/today url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/MovieCalendar/MovieCalendar.js
-#小木虫论坛
-#打开小木虫app => 发现页面 => 签到领红包 => 拆红包。弹出通知，即获取成功
-^https?://mapi.xmcimg.com/bbs/memcp.php?action url script-request-header https://raw.githubusercontent.com/toulanboy/scripts/master/muchong/muchong.js
-#微博超话
-#打开微博APP--我的--超话社区---底部栏--我的---关注， 弹出通知，提示获取已关注超话链接成功
-^https?://m?api.weibo.c(n|om)/2/(cardlist|page/button) url script-request-header https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/weibo/weibotalk.cookie.js
-#叮咚农场
-#叮咚买菜App - 右下角“我的”- 叮咚农场 进入即可获取cookie
-https://maicai.api.ddxq.mobi/user/checkLogin url script-request-header https://raw.githubusercontent.com/iepngs/Script/master/dingdong/index.js
-#腾讯新闻
-#打开腾讯新闻app，阅读几篇文章，倒计时结束后即可获取阅读Cookie;看一次推荐视频获取视频地址
-#快手极速版
-#APP登陆账号后，以下方法二选一获取Cookie：获取方法一，直接首页点击主页红包倒计时；获取方法二，在直播live页面中打开"送礼开宝箱"
-https://nebula.kuaishou.com/rest/n/nebula/activity/earn/overview url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/kuaishou.js
-#来客有礼
-#微信搜索'来客有礼'小程序,登陆京东账号，点击'发现',即可获取Cookie
-https://draw.jdfcloud.com//api/bean/square/silverBean/task/get? url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/lkyl.js
-#新浪新闻
-#打开app,点击”我的“=>”签到“
-https://newsapi.sina.cn/?resource=hbpage&newsId=HB-1-sina_gold_center url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
-https://newsapi.sina.cn/?resource=userpoint/signIn url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
-#中国电信套餐
-#下载安装 天翼账号中心 登陆
-^https?://e.189.cn/store/user/package_detail.do url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/telecomInfinity.js
-#微博
-#打开微博App，刷微博视频，获取Cookie；打开微博钱包点击签到，获取Cookie
-https://api.weibo.cn/\d/video/machine?gsid url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
-#中青看点极速版
-#进入app，进入任务中心或者签到一次,即可获取Cookie. 阅读一篇文章，获取阅读请求body，并获取阅读时长，在阅读文章最下面有个惊喜红包，点击获取惊喜红包请求
-https://\w+.youth.cn/TaskCenter/(sign|getSign) url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js
-https?://ios.baertt.com/v5/article/complete url script-request-body https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js
-https://ios.baertt.com/v5/article/red_packet url script-request-body https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js
-https://ios.baertt.com/v5/user/app_stay.json url script-request-body https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js
-#数码之家
-#登陆数码之家电脑版网页，签到一次,即可获取Cookie
-id=k_misign:sign&operation=qiandao&format=text url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/mydigit.js
-#QQ会员成长值
-#手机qq进入左侧会员，滑动即可
-https://proxy.vac.qq.com/cgi-bin/srfentry.fcgi? url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/QQVip/qqVipCheckIn.js
-#无忧行
-#打开无忧行App, 通知成功写入「 AccountID | UserID | Mobile | Token 」；依次点击"我的" 👉 "任务中心". 通知成功写入「 TaskID 」
-https?://app..jegotrip.com.cn/.*getUser? url script-response-body https://ooxx.be/js/jegotrip.js
-https?://task.jegotrip.com.cn:8080/app/tasks?userid url script-response-body https://ooxx.be/js/jegotrip.js
-#优麦医生
-#打开优麦医生App
-https?://api.umer.com.cn/.*getCurrentUmerSign url script-request-header https://ooxx.be/js/umer.js
-#时代天使
-#打开微信小程序 时代天使小管家，点击左下角刷新按钮，提示Cookie获取成功
-^https://exp.angelalign.com/api/v1/mini_program/get_plan_list url script-request-header https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/angelalign/angelalign.cookie.js
-#NGA刮墙
-#杀掉NGA后台并重新打开NGA，提示Cookie获取成功
-^https://ngabbs.com/nuke.php?? url script-request-body https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/nga/nga.cookie.js
-#微博去广告（启动圈x自动生效）
-^https?://m?api.weibo.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/photos/pic_recommend_status|video/tiny_stream_video_list|photo/info) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
-#显示京东历史价格（启动圈X自动生效）
-^https?://api.m.jd.com/client.action?functionId=(wareBusiness|serverConfig|basicConfig) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js
-#微信打卡小程序
-https://(www.baimaa.com|www.2xtj7.cn|www.hnmiaosu.cc|ph0001.hezyq.com|wq.02gk.com|dk.ne72.com)/app/index.php? url script-request-header https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/wxdaka.js
-#Geekhub
-^https://geekhub.com/checkins/start url script-request-header https://raw.githubusercontent.com/id77/QuantumultX/master/task/geekhub.cookie.js
-#电视家
-http://api.gaoqingdianshi.com/api/v\d/sign/signin url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js
-http://api.gaoqingdianshi.com/api/v2/cash/withdrawal url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js
-#达美乐
-^https?://dominos0724.shjimang.com/Ajax/GetSmsCode url script-request-body https://raw.githubusercontent.com/zZPiglet/Task/master/Domino/Domino_getSMS.js
-#有道云笔记
-^https://note.youdao.com/yws/mapi/user?method=checkin url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/noteyoudao/noteyoudao.cookie.js
-#keep解锁vip(仅针对Keep版本号6.24-6.27的版本)
-https://api.gotokeep.com/(.+/subject|.+/dynamic|.+/coursePlus/.+|.+/status|.+/tab|.+/my|.+/start|.+/join|.+/complete|.+/detail/.+|.+/preview|.+/auth|.+/tab|.+/days) url script-response-body https://raw.githubusercontent.com/photonmang/quantumultX/master/keep.js
+# 本地复写规则
 
 [task_local]
-1 0 * * * https://raw.githubusercontent.com/LJJJia/script/master/iklear/iklear_checkin.js, tag=iklear商城自动签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-1 0-18/6 * * * https://raw.githubusercontent.com/sngxpro/QuantumultX/master/jd818.js, tag=京东手机狂欢城, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-0 2,13,25,45,55 0-23 * * ? https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/wxdaka.js, tag=微信小程序打卡签到合集, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qktx.png, enabled=true
-5,35 8-21 * * * https://raw.githubusercontent.com/iepngs/Script/master/jrtt/index.js, tag=今日头条极速版, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jrtt.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jingxi.js, tag=京喜, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jingxi.png, enabled=true
-0 10 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/trainquery.js, tag=查火车票（点查看脚本修改日期车次并运行）, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/12306.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/umetrip/umetrip.js, tag=航旅纵横, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/umetrip.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/iepngs/Script/master/lxsj/index.js, tag=旅行世界购物版, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/lxsj.png, enabled=true
-1 9 * * * https://raw.githubusercontent.com/dompling/Script/master/oneSay/oneSay.js, tag=每日一言, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/calendar.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/ctrip/ctrip.js, tag=携程旅行, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/ctrip.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/ctrip_wx/ct_sign.js, tag=携程小程序, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/ctrip.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/elong/elong_draw.js, tag=艺龙酒店, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/elong.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/fcz/fcz_sign.js, tag=飞常准, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/fcz.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/icbc/icbc_sign.js, tag=工银e生活, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/icbc.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/jdczf/jdczf.js, tag=京东成长分, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jdczf.png, enabled=true
-0 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/tongc/tongc_sign.js, tag=同程小程序, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/tongc.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/barrym-chen/Script/master/tongc/tongc_info.js, tag=同程小程序, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/tongc.png, enabled=true
-*/5 0-22 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js, tag=梨涡闲时任务提醒, img-url=https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.png, enabled=true
-17 0 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7days.js, tag=梨涡签到领现金, img-url=https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.png, enabled=true
-6 8 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdtqz.js, tag=京东特权活力值, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jdczf.png, enabled=true
-5 8 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdtqz.js, tag=京东特权值, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-#早起打卡赚钱花小程序自动打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/daka5.js, tag=早起打卡赚钱花小程序自动返利, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-#坚持打卡赚钱小程序自动打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/daka4.js, tag=坚持打卡赚钱小程序自动返利, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-#打卡赚钱啦小程序自动打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/daka3.js, tag=打卡赚钱啦小程序自动打卡返利, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-#365打卡赚钱小程序自动打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/daka2.js, tag=365打卡赚钱小程序自动打卡返利, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-#每日早起打卡赚钱小程序自动打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/daka1.js, tag=每天早起打卡小程序, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-#早打卡赚钱小程序自动打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/zdk.js, tag=早打卡赚钱小程序自动打卡返利, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-#爱尚打卡小程序自动打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-#音乐line小程序打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/yydkziye.js, tag=音乐line小程序打卡返利, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-#微打卡小程序打卡返利（设定每15分钟打卡一次，请自行根据需要修改打卡间隔。打满可以选择暂时禁用，否则老提示怪烦人）
-0 1/15 0-23 * * ? https://raw.githubusercontent.com/sngxpro/scripts/master/wdk.js, tag=微打卡小程序打卡返利, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wxdaka.png
-1 0 * * * https://raw.githubusercontent.com/dompling/Script/master/cuuc/cuuc.js, tag=cu云加速每日签到
-0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/jd/JD_BaiTiao.js, tag=京东金融领白条券, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png
-0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/KuaiKan-DailyBonus/KKMH.js, tag=快看漫画, img-url=https://ftp.bmp.ovh/imgs/2020/09/a3345da5e9094363.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/iepngs/Script/master/lxhealth/manual.js, tag=乐心健康步数上传, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/lxhealth.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/iepngs/Script/master/studygolang/index.js, tag=go语言中文网, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/studygolang.png, enabled=true
-0 0 0,1 * * ? https://raw.githubusercontent.com/lowking/Scripts/master/QQPet/lkQQPet.js, tag=QQ萌宠, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/QQ.png, enabled=true
-0 0/2 * * * ? https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/htt_task_4.js, tag=惠头条, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/htt.png, enabled=true
-0 21,31,50 0-22 * * ? https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/qktx_task3.js, tag=趣看天下, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qktx.png
-1 9 * * * https://raw.githubusercontent.com/dompling/Script/master/xiaomiyp/xiaomiyp.js, tag=小米有品, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/xiaomiyp.png, enabled=true
-0 0 6 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/idaily/idaily.js, tag=iDaily每日环球视野, img-url=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/picture/idaily.png, enabled=true
-#推图
-0 21 * * * https://raw.githubusercontent.com/Orz-3/QuantumultX/master/telegram.js, tag=图片推送（公共场合慎用）, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/tgpic.png, enabled=true
-#生日倒计时脚本需要自行下载脚本修改，这里只作为范例
-1 0 * * * https://raw.githubusercontent.com/dompling/Script/master/birthdayCountDown/index.js, tag=生日倒计时（范例需自改）, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/birthday.png, enabled=true
-0 4 8 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/funboat/funboat.js, tag=Funboat, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/funboat.png, enabled=true
-0 0 0,1 * * ? https://raw.githubusercontent.com/lowking/Scripts/master/douyu/yubaSign.js, tag=斗鱼鱼吧, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/douyu.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/momosign.js, tag=陌陌极速版签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/momo.png, enabled=true
-0 2,13,25,45,55 0-23 * * ? https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/quwalk2.2.js, tag=趣走签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/quwalk.png, enabled=true
-#小小影视完整版签到必须执行下面格式不可修改，包括8个功能（签到，广告，分享，评论，10次观影，5次收藏，30分钟连续观影，每日22点开宝箱）
-*/10 0-30 9,22 * * * https://raw.githubusercontent.com/photonmang/quantumultX/master/xxysrw.js, tag=小小影视完整版签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/xxys.png
-#小小影视6任务版本不限时间格式(9点执行6任务，22点执行开箱)
-0 9,22 * * * https://raw.githubusercontent.com/photonmang/quantumultX/master/xxys_6rw.js, tag=小小影视自动签到+日常任务, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/xxys.png
-#小小影视连续观影30分钟的任务，分钟时间必须0-30分钟
-*/10 0-30 9 * * * https://raw.githubusercontent.com/photonmang/quantumultX/master/xxys_play.js, tag=小小影视30分钟观影, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/xxys.png
-10 0 * * * https://raw.githubusercontent.com/id77/QuantumultX/master/task/thg.js, tag=太好购, img-url=https://raw.githubusercontent.com/id77/QuantumultX/master/icon/thg.png
+# 其他自动化脚本及定时信息
 
-1 0 * * * https://raw.githubusercontent.com/id77/QuantumultX/master/task/163GameVip.js, tag=网易游戏会员, img-url=https://raw.githubusercontent.com/id77/QuantumultX/master/icon/163GameVip.png
-5 0 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/nasa/nasapic.js, tag=NASA每日一图, img-url=https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/picture/nasa.png
-##京东系脚本必须提前获取cookie才能生效。如果没有获取过，浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后即可获取
-##京东系脚本必须提前获取cookie才能生效。如果没有获取过，浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后即可获取
-30 0 8-22/2 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/hotsearch/hot.js, tag=热门监控, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/hot.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/acfun/acfun.js, tag=AcFun, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/acfun.png, enabled=true
-quantumultx #1 0,1-23/3 * * * https://raw.githubusercontent.com/lxk0301/scripts/master/jd_mohe.js, tag=热8超级魔盒, enabled=false
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/ximalaya/ximalaya.js, tag=喜马拉雅, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/ximalaya.png, enabled=true
-0 * * * * https://raw.githubusercontent.com/zZPiglet/Task/master/heybox/heybox.js, tag=小黑盒, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/heybox.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/tieba/tieba.js, tag=百度签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/baidu.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/wps/wps.js, tag=WPS, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wps.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/neteasemusic/quanx/neteasemusic.js, tag=网易云音乐, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Netease.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/elem/elemCheckIn.js, tag=饿了么-打卡领红包, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/elem.png, enabled=true
-0 0 0,1 * * ? https://raw.githubusercontent.com/lowking/Scripts/master/bilibili/bangumiMonitor.js, tag=哔哩哔哩番剧监控, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/bilibili.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/bilibili/bilibili.js, tag=bilibili, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/bilibili.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, tag=吾爱破解, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/52pj.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/Bilibili-DailyBonus/Manga.js, tag=哔哩哔哩漫画, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/manga.png, enabled=true
-##京东系脚本必须提前获取cookie才能生效。如果没有获取过，浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后即可获取
-0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js, tag=京东, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/iQIYI.js, tag=爱奇艺, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/iQIYI.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/10000/10000.js, tag=中国电信, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/10000.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.js, tag=中国联通, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/10010.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.js, tag=中国移动, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/10086.png, enabled=true
-10 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.fee.js, tag=10086查话费, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/10086fee.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/apktw/apktw.js, tag=APK.TW, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/apktw.png, enabled=true
-50 23 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/bcz/bcz.js, tag=百词斩, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/bcz.png, enabled=true
-https://raw.githubusercontent.com/chavyleung/scripts/master/box/switcher/box.switcher.js, tag=切换会话, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/box.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/bubei/bubei.js, tag=不背单词, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/bubei.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.js, tag=CSDN, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/csdn.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/dbsj/dbsj.js, tag=豆瓣时间, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/dbsj.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/dongqiudi/dongqiudi.js, tag=懂球帝, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/dongqiudi.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/duokan/duokan.js, tag=多看阅读, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/duokan.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/everphoto/everphoto.js, tag=时光相册, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/everphoto.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/fandeng/fandeng.js, tag=樊登读书, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/fandeng.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/feng/feng.js, tag=威锋网, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/feng.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/fenqile/fenqile.js, tag=分期乐, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/fenqile.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/flyertea/flyertea.js, tag=飞客茶馆, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/flyertea.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/gdoil/gdoil.js, tag=加油广东, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/gdoil.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/haidilao/hdl.js, tag=海底捞, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/haidilao.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/hellobike/hellobike.js, tag=哈啰出行, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/hellbike.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/hycan/hycan.js, tag=HYCAN合创, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/hycan.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/jddj/jddj.js, tag=京东到家, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jddj.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/maomicd/maomicd.js, tag=猫咪音乐, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/maomicd.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/mcdd/mcdd.js, tag=叮咚买菜, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/mcdd.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/meituan/meituan.js, tag=美团, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/meituan.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/mgtv/mgtv.js, tag=芒果TV, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/mgtv.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/midu/miduSign.js, tag=米读签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/midu.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/midu/miduRead.js, tag=米读阅读时长, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/midu.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/mihoyo/mihoyo.js, tag=米游社, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/mihoyo.png, enabled=true
-#取关京东店铺商品
-#默认每运行一次脚本取消关注10个商品，10个店铺。
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/neteasenews/neteasenews.js, tag=网易新闻, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/neteasenews.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/nio/nio.js, tag=蔚来, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/nio.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/noteyoudao/noteyoudao.js, tag=有道云笔记, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/noteyoudao.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/qimao/qmnovel.js, tag=七猫小说, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qimao.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/qmkg/qmkg.js, tag=全民K歌, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qmkg.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/qqmusic/qqmusic.js, tag=QQ音乐, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qqmusic.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.js, tag=趣头条, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qtt.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/qunar/qunar.js, tag=去哪儿, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qunar.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/rrtv/rrtv.js, tag=人人视频, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/rrtv.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.js, tag=顺丰速运, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/sfexpress.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/quanx/smzdm.js, tag=什么值得买, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/smzdm.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/tncj/tncj.min.js, tag=头脑吃鸡, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/tncj.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.js, tag=苏宁易购, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/suning.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/v2ex/quanx/v2ex.js, tag=V2EX, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/v2ex.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/videoqq/videoqq.js, tag=腾讯视频, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/videoqq.png, enabled=true
-10 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/wanda/wanda.js, tag=万达电影, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wanda.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/wmmeituan/wmmeituan.js, tag=美团外卖, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wmmeituan.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/wykl/wykl.js, tag=网易考拉, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/wykl.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/zaker/zaker.js, tag=Zaker, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/zaker.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/zimuzu/zimuzu.js, tag=字幕组, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/zimuzu.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/zxhc/zxhc.js, tag=智行火车, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/zxhc.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/zsfc/zsfc.js, tag=掌上飞车, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/zsfc.png, enabled=true
-10 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/pagoda/pagoda.js, tag=百果园, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/pagoda.png, enabled=true
-10 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/ithome/ithome.js, tag=IT之家, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/ithome.png, enabled=true
-#zZPiglet
-1 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/115/115.js, tag=115, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/115.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/Blibee/Blibee.js, tag=便利蜂, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Blibee.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi.js, tag=滴滴出行签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/didi.png, enabled=true
-59 23 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_reward.js, tag=滴滴出行福利金, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/didi.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/Naixue/Naixue.js, tag=奈雪, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Naixue.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/ZMTeacher/ZMTeacher.js, tag=掌门好老师, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/ZMTeacher.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/Oclean/Oclean.js, tag=欧可林, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Oclean.png, enabled=true
-0 7 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/MovieCalendar/MovieCalendar.js, tag=电影日历, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/MovieCalendar.png
-#songyangzz
-1 0 * * * https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js, tag=饿了么, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/elem.png, enabled=true
-1 0 * * * https://raw.githubusercontent.com/songyangzz/QuantumultX/master/lol.js, tag=LOL排行查询, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/lol.png, enabled=true
-0 0-23/1 * * * https://raw.githubusercontent.com/songyangzz/QuantumultX/master/testflight.js, tag=testflight公测监控, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/testflight.png, enabled=true
-#toulanboy
-5 0 * * * https://raw.githubusercontent.com/toulanboy/scripts/master/muchong/muchong.js, tag=小木虫论坛, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/muchong.png, enabled=true
-5 0 * * * https://raw.githubusercontent.com/toulanboy/scripts/master/weibo/weibotalk.js, tag=微博超话, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/weibo.png, enabled=true
-#Sunert
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js, tag=电视家, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/dianshijia.png, enabled=true
-0 10 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/exchangeRate.js, tag=实时货币换算, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/exchangerate.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/kuaishou.js, tag=快手极速版, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/kuaishou.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/lkyl.js, tag=来客有礼, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/lkyl.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js, tag=新浪新闻, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/sinanews.png, enabled=true
-10 8 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/telecomInfinity.js, tag=中国电信套餐, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/telecominfinty.png, enabled=true
-0 10 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/translate.js, tag=谷歌中英互译, img-url=https://raw.githubusercontent.com/Orz-3/task/master/translate.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js, tag=微博, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/weibo.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js, tag=中青看点极速版, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/youth.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/mydigit.js, tag=数码之家, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/maydigit.png, enabled=true
-#Peng-YM
-0 9 */7 * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/epic.js, tag=Epic周免, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/epic.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/exchange.js, tag=汇率监控, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/exchangerate.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/github.js, tag=GitHub, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/github.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/nCov.js, tag=疫情日报, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/COVID-19.png, enabled=true
-0 9 * * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/psn.js, tag=PSN会免, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/PSN.png, enabled=true
-#iepngs
-1 8,12,17 * * * https://raw.githubusercontent.com/iepngs/Script/master/dingdong/index.js, tag=叮咚农场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/mcdd.png, enabled=true
-#lowking
-0 0 0,1 * * ? https://raw.githubusercontent.com/lowking/Scripts/master/QQVip/qqVipCheckIn.js, tag=qq会员成长值, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/qqvip.png, enabled=true
-0 0 0 * * ? https://raw.githubusercontent.com/lowking/Scripts/master/sony/sonyClub.js, tag=索尼俱乐部, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/SONY.png, enabled=true
-#lxk0301
-25,56 */2 * * * https://gitee.com/lxk0301/scripts/raw/master/jd_moneyTree.js, tag=京东摇钱树, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-20,51 */3 * * * https://gitee.com/lxk0301/scripts/raw/master/jd_joy.js, tag=京东宠汪汪, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-15,46 */4 * * * https://gitee.com/lxk0301/scripts/raw/master/jd_speed.js, tag=京东天天加速, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-10,41 7-19/6 * * * https://gitee.com/lxk0301/scripts/raw/master/jd_fruit.js, tag=东东农场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-5,36 6-18/6 * * * https://gitee.com/lxk0301/scripts/raw/master/jd_pet.js, tag=京东萌宠, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-0,31 6-23/2 * * * https://gitee.com/lxk0301/scripts/raw/master/jd_plantBean.js, tag=种豆得豆, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jd.png, enabled=true
-#vinewx
-0 9 * * * https://ooxx.be/js/jegotrip.js, tag=无忧行, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jegotrip.png, enabled=true
-0 18 * * * https://ooxx.be/js/maoyan.js, tag=猫眼电影, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/maoyan.png, enabled=true
-0 9 * * * https://ooxx.be/js/umer.js, tag=优麦医生, img-url=https://raw.githubusercontent.com/Orz-3/mini/master//umer.png, enabled=true
-#chouchoui
-30 8,13,19 * * * https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/angelalign/angelalign.task.js, tag=时代天使, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/angelalign.png, enabled=true
-10 0 * * * https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/nga/nga.js, tag=NGA刮墙, img-url=https://raw.githubusercontent.com/Orz-3/mini/master//nga.png, enabled=true
-#京东818手机节(活动已结束，禁用即可)
-1 0-18/6 * * * https://gitee.com/lxk0301/scripts/raw/master/jd_818.js, tag=京东818手机节, img-url=https://raw.githubusercontent.com/Orz-3/task/master/jd.png, enabled=true
+[http_backend]
+# 将boxjs的加载方式修改为http_backend方式,默认浏览器登录boxjs地址为127.0.0.1:9999
+https://raw.githubusercontent.com/chavyleung/scripts/master/chavy.box.js, host=boxjs.com, tag=BoxJS, path=^/, enabled=true
+
 [mitm]
-passphrase = A52B4242
-p12 = MIIKsQIBAzCCCnsGCSqGSIb3DQEHAaCCCmwEggpoMIIKZDCCBL8GCSqGSIb3DQEHBqCCBLAwggSsAgEAMIIEpQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQYwDgQInXEqb9GRrAcCAggAgIIEeN8r2u0hV5NWFy59vsMExS1IZyE51lRSex+6c44kMFC6IhXqPCzO8MabV2AUgRYtBV4cFNHAv3ZOscQRrYnDOWyRoELhNcKp0uKLFIXGhvkWrqvSC0OTqrZc8WJJkqaIJiz2y9neotCbpesIte0o7jT2DzRY0b/1ysHgp/mc2w/evs8WBKFtghVzryElouUuEyO2uA9xTnfXBj/4+79I9YcothRMF5nPsVzULF5ohwXdVzCx+KwancGaqUuza3XkeJsWCuIIeOOwnzp5ZxZvKf0M2Tmzmes3q8hP4pIsMpSy7knapfRK4AEmCkyKJVd39sgpErhJwWyZu+gjUsdU+CVkPd9uU/9cF1Hu5B7/p92V7ofuktlAQi1ssGCnOnrPnMV5RzJIIM6Br/EePBEt2j7EK9WF30PZ5a1rQItYK8JjI21OBprFvdp857gdGmNMYK+WPG7WLQcL7+UQMoTFkPmEmI9tOsm9aaLXY5ovXqQMOVWUGI584sZlxngKgX/Ciiu0frwB93VYmCDteXePfgaEfQGKJzYSexnKMVFpfs8pzycwbLZ8svTXvZ7+FpEr/fa+QXFcvsvzlT41kNrm56OeBVXOU0jTsJpgo2Qd1dRGy1ntl+cuUkfCVA3mEXb4BRTTBCgjUz/Qaj3K91UBmZTDN0aUB9yVkkCINM0Hq4ZldPXJFMDswXyOfT+cNGs6tVrX2b1rLw286Rtwmhn0/VcUt7dMCgkqkVrIJ/ZkvG7lEzVQBNMVV6Gk/RCEKdXMPjJlsLucEnN5uQ8Yl2ZG3d8bcWfyBO0aS9Zg9QHzDoQ3uhXzXQdFilKy7fSY0yhPp9fnCrmwTAWdxNs18Yu0O4V1uOP8EPAudNUMZPBSWOxOnwwcKCCF1h74AEfYbbd0Ly9PEKZjh8HOa+4l3wFFNwufjF6/i2+sdo1qXrs2kmrcrAti2kOQ5B5/L/K+NF1ag+sS8ffHZ8O5SUdAaVWuNPkXgMOKwvCYJi56k/sfpP7caN5v4iOLvSt/CSF8fEOAUfSKpLuMvR/KpSTiUakIM+6yuDKgmZt85sTmexrBd2eSpRxblQdYJ/KUcszu8k5DkzTvn1fB3UntyufuXnyafMYxLFHBlHER2oq2S7A7wKYh2lHZ6OzB1lBAGeOffGHI3CsYMO0EvYVP6YDJ0UikenepnKhODO+Hn+bRrWasx9AKa3KMBfJstyMuj+L6J/FnBEZNCpccuNEIO6DP3IuivXszGdkWMo2mVZ9E/jCE3Hm0DrVGowLssgvWcx+mOcaKirAmGHdQnltF+obncXEMCS0etc03+K5SiV/QSviEvokj2PI4vAKyguvb7pvo9l0cCWjTCuN3RkMCEcWT4m6u1tfvu1C5VlzPgKIiCTMTIOJMlon9ul9Zr+BkkBVYg60BjP0HRporW7mApLvwF33aSVX6jCtgm/ld6mK5aYS+8JKCILDXKW49p5SB57wyl6MG77a7xTgKoVGDGRYVdDUKqSYsWOpX+AOe9Tx4j6NHi88IVvn6J4lVBeAwggWdBgkqhkiG9w0BBwGgggWOBIIFijCCBYYwggWCBgsqhkiG9w0BDAoBAqCCBO4wggTqMBwGCiqGSIb3DQEMAQMwDgQIfqgcA7Kr6ssCAggABIIEyNmyK6CVHN6wUp0j1dAED1OB9c0RNNYQPCvetXi5JVWvPB4BWhbCqQeTgo3YLrSji/p+kyWWmaYx0T55xGCsIdPwUIpwdRKHU1oNiuUDW+V5QA5gdYwX/I6agdK7t/cdQMOB6puGuxCxFOkGJEOIcaxH8ovT9mnQgk7Am50eW63JeC+v1tYcL1Fg4p7qvJXT6m3U3DD0kMTungrnAQlLqhgWnPrDqNFXCoGU6cKDpZCJSHvABVrRLaM7sSWNxXKu1RrLJB1HfsCaBoQBC3VIDBgPsc4uUb1qh4ssQ/w1u9BmDWNeT8P+ZcdMGcDdVzs1vjdYxzGFBtHS5cpEsUfxh5bVbiSNripJwH4MO8Q7MxbczFURcSdrgLieYj/kSOi0TKr+axVkhufLMJPK6W7TOEf1w14aq31URb+Vn0G6urx+c0jBjh66/1GmiVYKIOai5HKdCv4LBDM46KG+MjswDOjKrqOkoDZzGg9RbkdhmFB/6JdPqMv/nl97DQo7DGJp+imrJp/TVze8ai9KztVU9xHgEEPcLXnC42UT6wpjQ2Nd515WzW1lhLwjvpvRA2krxGb8OhHeOZCgDESjrXtqjw38zcClRqyy7FjI2R2FeMXOK5iArhniGTMGm9P99otp2o1zmNyv62PGYoGbREjw1tPYjLw8AJQmK9ED+9LkDzgMIaBZ8GLvQAERQ/8YqopCOCajeI1WYaS9U3Ht8U+gPysGQrbX4QBfXvkAOxdLr36hfG1MKFqh+2u7qlpk/lmR9ALH0FWwyEW8qlAAmGorJEYQVwd/NMmf9ENtxRVKP2/ArKGezN5H8u16P00N4AyQmzr1/mdC8ra9G0eDI66yO2ILBMe7sv80zJhJRsc5mYRYe+4d5AsQUC2+jA0e7jeJf6BpRqixFwueLOWFROu9zE8V/37BfXzrKbL3pj8+C6uBcxyI3RIJhdsAicDIL8XSygG7HkvwWxOCevesDZmlds41xvFUToHwshivXfLEMuyvgoQa1v1bkysXte2ix/lAUFYB4Vcj5YNIaKxytiHDcXwW9Ahdvvv8be9yL2V9ah5vDRqm2mHTWyCX9n1rMnKmx0+eS5Big77TXTIE1vsg48gFJiuwbX+ZMrFRYWvC3+BumIyTm9+9T5ZKKDwtJTO3FRn8dnX7aLWjbS8UHR/lEX4cLvvFXBQDSDYMGMFv+SB4XI407DUj4kb0WmWm6Jlhwkb9UZHYsEEZvhb4RdAFx0S3TdBSSflE4aFlDmcVDEHFpozfKb6Y8NsdIl8jW5cwTbaWHGbwQml06bSkiqr2Afg7T75vOSNifDE8qZUtc7TABJ1n1dDE1aVa0pl0iuAqT+m4HObtTn2PD5rmfzs70LjhaeqAZnxCUBSkDtD+DyvJCf01KPl4Z8Ev93axZCEq1QH2jFGnWz0KEmLj7oaidGUtTwkuNdYf9iEvNgsMnnDuqip44BmGMqzHVfig5i8GVNmQqNwivYoqVyTzunp0egXXlg6LuoUolVvCkmjvXqpIa0fo7949548jW0qtA3AE9vLhjAI07tRioL40IhruBneXreoxm/wHYU9IsrN2XcPDPUVDp8tKwyZe/Ynom0qBaGWwnuM6St17RBY2biV7IizFmVE63MjEUzGBgDAjBgkqhkiG9w0BCRUxFgQU6Y5QSH0nfLRaoKclBVBVimRxxoYwWQYJKoZIhvcNAQkUMUweSgBRAHUAYQBuAHQAdQBtAHUAbAB0ACAAWAAgAEMAQQAgAEEANQAyAEIANAAyADQAMgAgACgAMgAgAEEAdQBnACAAMgAwADIAMAApMC0wITAJBgUrDgMCGgUABBTbprAsgnGnsiN4BVWhxeUty1OImQQIsQ1eWRGI5Lg=
-hostname = api.xiaoheihe.cn,api.m.jd.com,manga.bilibili.com,.bilibili.com,xiaoshuo.qm989.com,.video.qq.com,.acfun.cn,110.43.90.61,tieba.baidu.com,h5.ele.me,.iqiyi.com,wapside.189.cn,wx.10086.cn,apk.tw,clientaccess.10086.cn,group.baicizhan.com,.csdn.net,sapi.beingfine.cn,frodo.douban.com,api.dongqiudi.com,www.duokan.com,api.everphoto.cn,api.dushu.io,pm.m.fenqile.com,www.flyertea.com,m.gdoil.cn,activity-1.m.duiba.com.cn,gameapi.hellobike.com,wxprdapplet.gac-nio.com,my.ruanmei.com,daojia.jd.com,www.maomicd.com,maicai.api.ddxq.mobi,i.meituan.com,credits.bz.mgtv.com,apiwz.midukanshu.com,api-takumi.mihoyo.com,music.163.com,.m.163.com,api.infzm.com,app.nio.com,wx-mini.pagoda.com.cn,node.kg.qq.com,api.1sapp.com,user.qunar.com,.rr.tv,sf-integral-sign-in.weixinjia.net,mcs-mimp-web.sf-express.com,.smzdm.com,passport.suning.com,luckman.suning.com,sign.suning.com,gameapi.suning.com,tncj.hortorgames.com,.v2ex.com,user-api-prd-mx.wandafilm.com,promotion.waimai.meituan.com,zt.wps.cn,mobwsa.ximalaya.com,iphone.myzaker.com,.rrys2019.com,ios.zmzapi.com,mwegame.qq.com,m.ctrip.com,proapi.115.com,h5.bianlifeng.com,as.xiaojukeji.com,superapp.kiwa-tech.com,webapi.qmai.cn,teacherapi.zmlearn.com,mall.oclean.com,.xmcimg.com,api.weibo.cn,api.inews.qq.com,nebula.kuaishou.com,newsapi.sina.cn,e.189.cn,pay.sc.weibo.com,.youth.cn,ios.baertt.com,www.mydigit.cn,proxy.vac.qq.com,app*.jegotrip.com.cn,task.jegotrip.com.cn,api.umer.com.cn,exp.angelalign.com,ngabbs.com,xeq1kjnhr.m.jd.com,mapi.weibo.com,.uve.weibo.com,trade-acs.m.taobao.com,huiyuan.163.com,cxdng.cpic.com.cn,draw.jdfcloud.com,.xxjjappss.com,..mob.com,mk.immomo.com,mobile01.91quzou.com,yuba.douyu.com,h5.youzan.com,zm.shujumagician.com,m.xiaomiyoupin.com,api.cashtoutiao.com,appv8.qukantianxia.com,appv7.qukantx.com,qqpet.jwetech.com,sports.lifesense.com,studygolang.com,snailsleep.net,music.snailsleep.net,community.snailsleep.net,nmeditation.snailsleep.net,baimiao.uzero.cn,api.kkmh.com,p.du.163.com,api1000.cvxia.com,www.baimaa.com,jdjoy.jd.com,www.cuuc.club,vip1.kuwo.cn,api.bjxkhc.com,pan.baidu.com,.amemv.com,ph0001.hezyq.com,w3.ilovecoupon.top,pd.xuexgchn.xyz,xx.cqxygzs.cn,ios-fenqu11.lxsjgo.com,wq.02gk.com,wq.jd.com,cloud.umetrip.com,m.ctrp.com,.ctrp.com,m.elong.com,activity.m.duiba.com.cn,icbc1.wlphp.com:8444,wx.17u.cn,i.snssdk.com,is.snssdk.com,api_2496.kuwo.cn,www.2xtj7.cn,www.hnmiaosu.cc,dk.ne72.com,geekhub.com,dominos0724.shjimang.com,note.youdao.com,irecgo.softin-tech.com,1008610010.yohui.vip,api.gotokeep.com,59.110.149.231,129.211.156.213,shop42867343.youzan.com
+# 需要在圈x设置中生成mitm证书并安装后,圈x才能正常工作。
+skip_validating_cert = true
