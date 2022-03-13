@@ -7,8 +7,10 @@ hostname =pan.baidu.com,account.wps.cn,ap*.intsig.net,vip1.kuwo.cn,cn1.invit.vip
 ^http:\/\/ttt2\.tbrapi\.org\:8080\/api.php\/api\/user\/userinfo url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/ttt/sngxttt.js
 
 
-#彩云
-^https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/CaiYunWeather.js
+#彩云  第一行无网络
+#^https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/CaiYunWeather.js
+^https:\/\/biz\.caiyunapp\.com\/v2\/user.+ url script-response-body https://gjds.vip/QX/pojie/cytq.js
+
 
 
 #羞羞漫画解锁vip(作者qq群：528680197)
