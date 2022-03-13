@@ -1,21 +1,14 @@
-####Snippet:https://github.com/apang1945/Quanx/tree/main/Quantumultx/Snippet#####################################################
-# > 拦截100解锁超级会员
-^https?:\/\/tagit\.hyhuo\.com\/cypt\/block100\/get_vip_info$ url script-response-body https://raw.githubusercontent.com/yqc007/QuantumultX/master/Block100SVIPCrack.js
-hostname = tagit.hyhuo.com
-####################
-^https?:\/\/sub\.store url script-analyze-echo-response https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/backend/sub-store.min.js
-hostname=sub.store
-#simple_cert_hostname=sub.store
-########################################################################################
-
-
-####https://github.com/apang1945/Quanx/blob/main/Quantumultx/Profiles/unlockvip.conf########
-hostname = ttt2.tbrapi.org:8080,c.banghankeji.com,api.dushu365.com,gateway-api.*.com,*.kuwo.cn,api.*.xyz,api.wscdn.vip,pan.baidu.com,api.myb6api.*:8080,69shipin.vip,ws.60he.com,www.zhihu.com,jk.5apk.cn,api.zhihu.com,zhuanlan.zhihu.com,ftvn.hawsing.com.tw:3000,*.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,lginstaacademy.com,cn1.invit.vip,www.babybooks.top,awmattack.*.com,testflight.apple.com,i.at.qq.com,api_2496.kuwo.cn,*.amemv.com,pan.baidu.com,api.bjxkhc.com,vip1.kuwo.cn,api1000.cvxia.com,p.du.163.com,baimiao.uzero.cn,snailsleep.net,music.snailsleep.net,community.snailsleep.net,nmeditation.snailsleep.net,*.xxjjappss.com,vsco.co,irecgo.softin-tech.com,1008610010.yohui.vip,api.gotokeep.com,59.110.149.231,129.211.156.213
+hostname =pan.baidu.com,account.wps.cn,ap*.intsig.net,vip1.kuwo.cn,cn1.invit.vip,biz.caiyunapp.com,tagit.hyhuo.com,ttt2.tbrapi.org:8080,c.banghankeji.com,api.dushu365.com,gateway-api.*.com,*.kuwo.cn,api.*.xyz,api.wscdn.vip,api.myb6api.*:8080,69shipin.vip,ws.60he.com,www.zhihu.com,jk.5apk.cn,api.zhihu.com,zhuanlan.zhihu.com,ftvn.hawsing.com.tw:3000,*.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,lginstaacademy.com,cn1.invit.vip,www.babybooks.top,awmattack.*.com,testflight.apple.com,i.at.qq.com,api_2496.kuwo.cn,*.amemv.com,api.bjxkhc.com,vip1.kuwo.cn,api1000.cvxia.com,p.du.163.com,baimiao.uzero.cn,snailsleep.net,music.snailsleep.net,community.snailsleep.net,nmeditation.snailsleep.net,*.xxjjappss.com,vsco.co,irecgo.softin-tech.com,1008610010.yohui.vip,api.gotokeep.com,59.110.149.231,129.211.156.213,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,-*.weibo.com,mp.weixin.qq.com,security.wechat.com,weixin110.qq.com,duckduckgo.com,*.google.cn,*.google.com.hk,testflight.apple.com,boxer.baidu.com,pan.baidu.com,weather-data.apple.com,*.youtube.com,m.douban.com
+#100
+#^https?:\/\/tagit\.hyhuo\.com\/cypt\/block100\/get_vip_info$ url script-response-body https://raw.githubusercontent.com/yqc007/QuantumultX/master/Block100SVIPCrack.js
 
 #汤头条解锁vip(少年歌行pro製作，轉載請保留出處信息)
 #下载地址：ttt.tips
 ^http:\/\/ttt2\.tbrapi\.org\:8080\/api.php\/api\/user\/userinfo url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/ttt/sngxttt.js
 
+
+#彩云
+^https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/CaiYunWeather.js
 
 
 #羞羞漫画解锁vip(作者qq群：528680197)
@@ -123,10 +116,6 @@ https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user url script-response-body
 ^https:\/\/(.+)\.com(\/\/api\/movie\/addPlay|\/\/api\/member|\/api\/video_clip\/play|\/api\/app\/message_list|\/api\/home\/index_recommend|\/\/api\/movie\/play\/) url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/s7aa.cn/kumi.js
 
 
-#电子请柬制作 - 婚礼邀请函制作必备APP 破解vip（少年歌行pro製作）
-^https:\/\/cn1\.invit\.vip\/users\/info url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/qing/qing.js
-
-
 #儿童睡前故事破解vip（少年歌行pro製作）
 #下载地址：appstore下载，https:\/\/apps.apple.com\/cn\/app\/%E5%84%BF%E7%AB%A5%E7%9D%A1%E5%89%8D%E6%95%85%E4%BA%8B-%E7%AB%A5%E5%B9%B4%E5%BF%85%E5%90%AC%E7%9A%84%E5%A5%BD%E6%95%85%E4%BA%8B\/id1458435477
 ^https:\/\/www\.babybooks\.top\/v0\/profile url script-response-body https://raw.githubusercontent.com/sngxpro/QuantumultX/master/babybooks/babybooks2.js
@@ -186,4 +175,45 @@ https:\/\/api1000\.cvxia\.com\/(user\/info|mov\/browse2*) url script-response-bo
 #开启圈x自动生效
 https:\/\/.*\..*\.com\/(vod\/reqplay\/|ucp/index|getGlobalData) url script-response-body https://raw.githubusercontent.com/photonmang/quantumultX/master/xxys.js
 
-########################################################################################
+
+# BaiDu NetDisk
+^https?:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/BaiDuWangPan.js
+
+# WPS
+^https://account.wps.*/api/users/ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/WPS.js
+
+# 扫描全能王
+^https?:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/CamScanner.js
+ 
+# 电子请柬制作 - 婚礼邀请函制作必备APP
+# 下载地址 https://apps.apple.com/cn/app/%E7%94%B5%E5%AD%90%E8%AF%B7%E6%9F%AC%E5%88%B6%E4%BD%9C-%E5%A9%9A%E7%A4%BC%E9%82%80%E8%AF%B7%E5%87%BD%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87app/id1354806829
+^https?:\/\/cn1\.invit\.vip\/users\/info url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/QingJian.js
+ 
+# 微博去广告
+^https?://(sdk|wb)app.uve.weibo.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js
+^https?://m?api\.weibo\.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/photos/pic_recommend_status|video/tiny_stream_video_list|photo/info) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
+
+# 微信去除公众号文章底部广告
+^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
+# 解除微信链接限制
+^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? url script-response-body https://raw.githubusercontent.com/zZPiglet/Task/master/asset/UnblockURLinWeChat.js
+
+# 阻止google.com 跳转到google.com.hk
+^https?:\/\/(www\.)?g\.cn url 302 https://www.google.com
+^https?:\/\/(www\.)?google\.cn url 302 https://www.google.com
+
+# TestFlight下载修正
+^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$ url script-request-body https://gist.githubusercontent.com/NobyDa/9be418b93afc5e9c8a8f4d28ae403cf2/raw/TF_Download.js
+
+# 百度搜索防跳转
+^https?\:\/\/boxer\.baidu\.com\/scheme\?scheme url script-response-body https://raw.githubusercontent.com/app2smile/rules/master/js/baidu-no-redirect.js
+
+# 美标空气质量
+^https?:\/\/weather-data\.apple\.com\/(v1|v2)\/weather.*(?!dataSets=forecastNextHour)(include=.*air_quality.*|dataSets=.*airQuality.*).*(country=[A-Z]{2})?.* url script-response-body https://raw.githubusercontent.com/VirgilClyne/iRingo/main/js/Apple_Weather.js
+
+# YouTube简体中文字幕
+# YouTube字幕翻译 需配合捷径：https://www.icloud.com/shortcuts/d50240f4767d4e16a36cd64194dbba3f 使用。
+# https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!zh)((?!&tlang=zh\-Hans).)*$ url request-header \sHTTP/1\.1(\r\n) request-header &tlang=zh-Hans HTTP/1.1$1
+https:\/\/setting.youtube.com\/\?action=(g|s)et url script-analyze-echo-response https://raw.githubusercontent.com/Neurogram-R/Quantumult-X/main/Dualsub.js
+https:\/\/www.youtube.com\/api\/timedtext.+ url script-request-header https://raw.githubusercontent.com/Neurogram-R/Quantumult-X/main/Dualsub.js
