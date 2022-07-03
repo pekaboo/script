@@ -1,0 +1,112 @@
+### 知乎去广告，以下规则请放置在filter_local最顶部
+IP-CIDR,118.89.204.198/32,REJECT
+IP6-CIDR,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT
+HOST,118.89.204.198,REJECT
+# 知乎去广告，以下规则的位置越前方越好
+HOST,appcloud2.in.zhihu.com,REJECT
+HOST,mqtt.zhihu.com,reject
+HOST,sugar.zhihu.com,reject
+USER-AGENT,AVOS*,REJECT
+
+# 召唤师
+HOST-SUFFIX,zhs.cloud,Global
+HOST-SUFFIX,zhs.tw,Global
+# unsplash
+HOST-SUFFIX,unsplash.com,Global
+# TheVerge
+HOST-SUFFIX,theverge.com,Global
+# VSCO
+HOST-SUFFIX,vsco.co,Global
+# revenuecat
+HOST-SUFFIX,revenuecat.com,Global
+
+# ～ 真不卡
+DOMAIN-SUFFIX, ttayy.cn, reject
+DOMAIN-SUFFIX, zhengxiaoliu.top, reject
+# ～ NicoNico
+host, ads.nicovideo.jp, reject
+# ～ HDO
+DOMAIN-SUFFIX,applovin.com,REJECT
+DOMAIN-SUFFIX,applvn.com,REJECT
+# ～ 美颜相机去首页和轮播广告
+host, adui.tg.meitu.com, reject
+host, aaid.uyunad.com, reject
+# ～ 爱奇艺广告屏蔽
+ip-cidr, 203.107.63.154/32, reject
+# ～ 多多视频去开屏广告
+host-suffix, bayescom.com, reject
+# ～ 车来了（包括小程序）
+host-suffix, atrace.chelaile.net.cn, reject
+host, logs.chelaile.net.cn, reject
+host, ad.chelaile.net.cn, reject
+# ～ 铁路12306
+HOST, ad.12306.cn, REJECT
+# ～ 两步路
+HOST-SUFFIX, admobile.top, REJECT
+
+# ~ REJECT🚫
+HOST-SUFFIX, ywak.com.cn, REJECT
+HOST-SUFFIX, govlaibing.cn, REJECT
+HOST-SUFFIX, log.trackingio.com,REJECT
+HOST-SUFFIX, adtrack.xiaojukeji.com,REJECT
+HOST-SUFFIX, adtrack.unilog.wostore.cn,REJECT
+HOST-SUFFIX, trackingio.com,REJECT
+HOST-SUFFIX, hpplay.cn, REJECT
+HOST-SUFFIX, admobile.top, REJECT
+HOST-SUFFIX, yvfnb.cn, REJECT
+HOST-SUFFIX, netease.im, REJECT
+HOST-SUFFIX, bayescom.cn, REJECT
+HOST-SUFFIX, zqslg.cn, REJECT
+HOST-SUFFIX, govhebie.cn, REJECT
+
+HOST, ad.12306.cn, REJECT
+HOST, ads.95516.com, REJECT
+# HOST, token.safebrowsing.apple, REJECT
+HOST, tnc3-aliec2.snssdk.com, REJECT
+HOST, upload-images.jianshu.io, REJECT
+HOST, static-assets-44d.pages.dev, REJECT
+HOST, support.you.163.com, REJECT
+HOST, cm-cn-central-00001.albatross.10086.cn, REJECT
+HOST, cloudmobi-creative-center.s3.ap-southeast-1.amazonaws.com, REJECT
+HOST, s.openmediation.com, REJECT
+HOST, api.applovefrom.com, REJECT
+HOST, api16-access-sg.pangle.io, REJECT
+HOST, a1235.hnhx360.com, REJECT
+HOST, adash-emas.cn-hangzhou.aliyuncs.com, REJECT
+HOST, mediation-tracking.prd.mz.internal.unity3d.com, REJECT
+HOST, down-files.2bulu.com, REJECT
+HOST, httpdns.titannetwork.cn, REJECT
+HOST, mpush-api.aliyun.com, REJECT
+HOST, dark.hyhuo.com, REJECT
+HOST, beacon-api.aliyuncs.com, REJECT
+HOST, ntb.hyhuo.com, REJECT
+HOST, logs.chelaile.net.cn, REJECT
+HOST, ip-api.com, REJECT
+HOST, 6185059.com, REJECT
+HOST, wanproxy-hz.127.net, REJECT
+HOST, nstool.netease.com, REJECT
+HOST, api-access.pangolin-sdk-toutiao.com, REJECT
+HOST, 91adv.com.cn, REJECT
+HOST, adui.tg.meitu.com, REJECT
+HOST, sensorsdata.cmcc-cs.cn, REJECT
+HOST, lupic.cdn.bcebos.com, REJECT
+HOST, moment-app-team.s3.amazonaws.com, REJECT
+HOST, pgapi.ksmobile.com, REJECT
+HOST, pangolin.snssdk.com, REJECT
+HOST, iconfactory.com, REJECT
+# HOST, ocsp.apple.com, REJECT
+HOST, img.offeryeah.online, REJECT
+HOST, img.cdn.famobi.com, REJECT
+HOST, static.alookbrowser.com, REJECT
+HOST, app-measurement.com, REJECT
+HOST, log.ihuman.com, REJECT
+HOST, dc.114dev.com, REJECT
+
+# ~ DIRECT❌
+HOST, www.libvio.com, DIRECT
+HOST, www.zzzfun.com, DIRECT
+HOST, www.zhenbuka3.com, DIRECT
+HOST, www.abskoop.com, DIRECT
+HOST-SUFFIX, qianoo.cn, DIRECT
+HOST-SUFFIX, nfmovies.com, DIRECT
+HOST-KEYWORD, bimiacg, DIRECT

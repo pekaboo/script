@@ -98,5 +98,18 @@ Footer
 
 
 
+hostname=*.wangbiwu.com,a1235.hnhx360.com,utoken.umeng.com
 
-[rewrite_remote]
+^https:\/\/a1235\.hnhx360\.com\/getGlobalData     url script-response-body https://raw.githubusercontent.com/cefv12/cefv/111/guankan.js
+^https:\/\/utoken\.umeng\.com\/api\/updateZdata\/v2  url script-response-body https://raw.githubusercontent.com/cefv12/cefv/111/guankan.js
+^https:\/\/*\.wangbiwu\.com\/vod\/playhb\/*     url script-response-body   https://raw.githubusercontent.com/cefv12/xxys/xxys/xxyswxk.js
+^https:\/\/*\.wangbiwu\.com\/vod\/show\/*     url script-response-body   https://raw.githubusercontent.com/cefv12/xxys/xxys/kids.js
+^https:\/\/*\.wangbiwu\.com\/ucp\/index   url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/XXYS.js
+^https:\/\/*\.wangbiwu\.com\/init?v=3.4.0   url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/quguanggao.js
+^https:\/\/*\.wangbiwu\.com\/getGlobalData?v=3.4.0   url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/XXYS.js
+^https:\/\/*\.wangbiwu\.com\/index?tab=0   url script-response-body https://raw.githubusercontent.com/cefv12/cefv/111/guankan.js
+^https:\/\/*\.wangbiwu\.com\/ucp\/task\/qrcode  url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/XXYS.js
+^https:\/\/*\.wangbiwu\.com\/ucp\/task\/index  url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/XXYS.js
+^https:\/\/*\.wangbiwu\.com\/playlog\/listing?timeline=?&page=?  url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/XXYS.js
+^https:\/\/*\.wangbiwu\.com\/ucp\/task\/sign  url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/XXYS.js
+^https:\/\/*\.wangbiwu\.com\/ucp\/account\/index url script-response-body  https://raw.githubusercontent.com/cefv12/cefv/111/XXYS.js
