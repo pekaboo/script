@@ -1,4 +1,4 @@
-hostname=api.bjxkhc.com,pan.baidu.com,biz.caiyunapp.com,bea.sportq.com,*.gotokeep.com,api.gotokeep.com,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com,commerce-.*api.faceu.com,pay.faceu.com,commerce-.*api.wecut.com,pay.wecut.com,commerce-.*api.faceu.mobi,pay.faceu.mobi,commerce-.*api.wecut.mobi,pay.wecut.mobi,api.meiyan.com,.*.meiyan.com ,.*.meitu.com ,api.infzm.com,raw.githubusercontent.com,api.polaxiong.com,app-live.planefinder.net,www.pornhub.com,cn.pornhub.com ,api.intsig.net,api-cs.intsig.net,spclient.wg.spotify.com,testflight.apple.com,api.tidal.com,api.termius.com,account.wps.cn,*docker*.wps.cn,p.du.163.com,dict.youdao.com,xluser-ssl.xunlei.com,www.xmind.cn,www.youtube.com
+text = `hostname=api.bjxkhc.com,baidu.com,caiyunapp.com,
 
 # https://moyu-server.miht.ml/api/notion/text-code?page_id=38b5ae07-f1d2-4c42-a35e-a54fada76e87
 # ======= A ======= #
@@ -137,3 +137,80 @@ https:\/\/www.youtube.com\/api\/timedtext\?.+&lang=(?!(zh|zh\-Hans)&)((?!&tlang=
 // https://raw.githubusercontent.com/id77/QuantumultX/master/rewrite/Youtube_CC.conf
 
 # ======= Z ======= #
+`;
+
+const getDomins = (text) => {
+    // 读取第一行
+    let hostname = text.match(/hostname.*/g)[0]
+    dos = []
+    // console.log(hostname.replace(/hostname=/g, ''))
+    hostname.replace(/hostname=/g, '').split(',').forEach((item) => {
+        dos.push(item)
+    })
+    return dos
+}
+const getRules = (text) => {
+    let hostname = text.match(/hostname.*/g)[0]
+    let hostnames = []
+    let content = text.replace(/hostname.*/g, '')
+    const regex = /(\^https|https).*/g;
+    content.match(regex).forEach((item) => {
+        console.log(item) 
+        xxx = /\/\/(.*?)\//g; 
+        // 获取group1
+        let groupos = xxx.exec(item)
+        if (groupos) {
+            let domain = groupos[1]
+        console.log(domain)
+        console.log("=============")
+        hostnames.push(domain)
+        }
+        
+    })
+    return hostnames
+}
+domains  = getRules(text) 
+domains = [...new Set(domains)]// domains 去重
+console.log(domains.join('\n'))
+
+aaa = ` 
+api.bjxkhc.com
+pan.baidu.com
+biz.caiyunapp.com
+bea.sportq.com
+*.gotokeep.com
+api.gotokeep.com
+h5.xiuxiu.meitu.com
+api.xiuxiu.meitu.com
+commerce-.*api.faceu.com
+pay.faceu.com
+commerce-.*api.wecut.com
+pay.wecut.com
+commerce-.*api.faceu.mobi
+pay.faceu.mobi
+commerce-.*api.wecut.mobi
+pay.wecut.mobi
+api.meiyan.com
+.*.meiyan.com 
+.*.meitu.com 
+api.infzm.com
+raw.githubusercontent.com
+api.polaxiong.com
+app-live.planefinder.net
+www.pornhub.com
+cn.pornhub.com 
+api.intsig.net
+api-cs.intsig.net
+spclient.wg.spotify.com
+testflight.apple.com
+api.tidal.com
+api.termius.com
+account.wps.cn
+*docker*.wps.cn
+p.du.163.com
+dict.youdao.com
+xluser-ssl.xunlei.com
+www.xmind.cn
+www.youtube.com
+`
+console.log(aaa.replace(/\n/g, ','))
